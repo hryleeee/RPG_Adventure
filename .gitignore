@@ -1,0 +1,29 @@
+# Unity temporary and generated folders
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ex]portedObj/
+/[Mm]emoryCaptures/
+/[Ll]logs/
+/[Vv]id/
+
+# Windows/Unity background tracking
+.vs/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+*.vsidx
+
+# Specific system files locking your project
+Temp/
+Library/
+UserSettings/
+Logs/
