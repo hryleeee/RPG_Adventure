@@ -71,29 +71,43 @@ public class PlayerController : MonoBehaviour
     /// <summary>Called by PlayerInput when Attack action fires (Left Click / Gamepad West).</summary>
     private void OnAttack(InputValue value)
     {
-        if (value.isPressed)
+        // Only trigger attack on press, not on release
+        // The animation's Exit Time will return it to Idle automatically
+        if (value.isPressed && !isAttacking)
         {
             isAttacking = true;
             isGuarding  = false;
-        }
-        else
-        {
-            isAttacking = false;
+            // Auto-reset after the attack animation length
+            StartCoroutine(ResetAttack());
         }
     }
 
-    /// <summary>Called by PlayerInput when Crouch action fires — used as Guard here.</summary>
+    /// <summary>Called by PlayerInput when Crouch action fires — used as Guard toggle here.</summary>
     private void OnCrouch(InputValue value)
     {
         if (value.isPressed)
         {
-            isGuarding  = true;
-            isAttacking = false;
+            // Toggle guard on/off each time C is pressed
+            isGuarding = !isGuarding;
+
+            if (isGuarding)
+            {
+                isAttacking = false;
+                Debug.Log("[PlayerController] Guard ON");
+            }
+            else
+            {
+                Debug.Log("[PlayerController] Guard OFF");
+            }
         }
-        else
-        {
-            isGuarding = false;
-        }
+    }
+
+    /// <summary>Resets isAttacking after a short delay matching the attack animation length.</summary>
+    private System.Collections.IEnumerator ResetAttack()
+    {
+        // Wait for the attack animation to finish (adjust time to match your clip length)
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
     }
 
     // -------------------------------------------------------
@@ -103,14 +117,10 @@ public class PlayerController : MonoBehaviour
     {
         if (rb == null) return;
 
-        // Can't move while guarding
-        if (isGuarding)
-        {
-            rb.linearVelocity = Vector2.zero;
-            return;
-        }
-
         float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
+
+        // Move slower while guarding
+        if (isGuarding) speed *= 0.4f;
 
         Vector2 velocity = moveInput.sqrMagnitude > 1f
             ? moveInput.normalized * speed
