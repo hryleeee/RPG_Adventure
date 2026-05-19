@@ -1,0 +1,832 @@
+fileFormatVersion: 2
+guid: 04cc46511e6dcf540bc3a2fd54679986
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1923783993790238136
+    second: ClickedButton_0
+  - first:
+      213: -5332111696064458888
+    second: ClickedButton_1
+  - first:
+      213: 1665859018167110342
+    second: ClickedButton_2
+  - first:
+      213: -2907958839124111612
+    second: ClickedButton_3
+  - first:
+      213: 1049603734173430336
+    second: ClickedButton_4
+  - first:
+      213: -843492095249062940
+    second: ClickedButton_5
+  - first:
+      213: -2255352575795607958
+    second: ClickedButton_6
+  - first:
+      213: -7101789826432327534
+    second: ClickedButton_7
+  - first:
+      213: 722617801118072319
+    second: ClickedButton_8
+  - first:
+      213: -1955038337030232743
+    second: ClickedButton_9
+  - first:
+      213: 473216816815132559
+    second: ClickedButton_10
+  - first:
+      213: 1911029453964729494
+    second: ClickedButton_11
+  - first:
+      213: 2971110795056888923
+    second: ClickedButton_12
+  - first:
+      213: 7979416404441109389
+    second: ClickedButton_13
+  - first:
+      213: -7375000775096629740
+    second: ClickedButton_14
+  - first:
+      213: 3311419256896624375
+    second: ClickedButton_15
+  - first:
+      213: 4839298181113358023
+    second: ClickedButton_16
+  - first:
+      213: 4462034668387920078
+    second: ClickedButton_17
+  - first:
+      213: 991958635458879302
+    second: ClickedButton_18
+  - first:
+      213: -3869478982265509044
+    second: ClickedButton_19
+  - first:
+      213: -4102759670460770452
+    second: ClickedButton_20
+  - first:
+      213: 1186740006946255542
+    second: ClickedButton_21
+  - first:
+      213: -8962263340256660169
+    second: ClickedButton_22
+  - first:
+      213: -5554886266622779453
+    second: ClickedButton_23
+  - first:
+      213: -3993158237577736536
+    second: ClickedButton_24
+  - first:
+      213: -3391117714904353526
+    second: ClickedButton_25
+  - first:
+      213: 8859263654927731686
+    second: ClickedButton_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: StartClickButton
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 1351
+        width: 1333
+        height: 567
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 842fc8976a85d45e0800000000000000
+      internalID: -1923783993790238136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClickedButton_1
+      rect:
+        serializedVersion: 2
+        x: 2326
+        y: 1348
+        width: 1247
+        height: 539
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87f4f55c9a88006b0800000000000000
+      internalID: -5332111696064458888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuClickButton
+      rect:
+        serializedVersion: 2
+        x: 3754
+        y: 1576
+        width: 314
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca4bbf63f15e1710800000000000000
+      internalID: 1665859018167110342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PowerClickButton
+      rect:
+        serializedVersion: 2
+        x: 4135
+        y: 1576
+        width: 314
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40fcc84c7dad4a7d0800000000000000
+      internalID: -2907958839124111612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CheckClickButton
+      rect:
+        serializedVersion: 2
+        x: 4516
+        y: 1576
+        width: 312
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 042b4520901f09e00800000000000000
+      internalID: 1049603734173430336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: XClickButton
+      rect:
+        serializedVersion: 2
+        x: 4898
+        y: 1576
+        width: 311
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e364db88605b44f0800000000000000
+      internalID: -843492095249062940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MenuBigClickButton
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 922
+        width: 961
+        height: 365
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a66c07c18c063b0e0800000000000000
+      internalID: -2255352575795607958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OptionBigClickButton
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 922
+        width: 942
+        height: 336
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 290a40e97cf517d90800000000000000
+      internalID: -7101789826432327534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PlayClickButton
+      rect:
+        serializedVersion: 2
+        x: 3754
+        y: 1188
+        width: 314
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd3400cf01470a00800000000000000
+      internalID: 722617801118072319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseClickButton
+      rect:
+        serializedVersion: 2
+        x: 4132
+        y: 1189
+        width: 317
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 955ea0f9dfe4ed4e0800000000000000
+      internalID: -1955038337030232743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SettingsClickButton
+      rect:
+        serializedVersion: 2
+        x: 4516
+        y: 1188
+        width: 312
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8fc10c0034319600800000000000000
+      internalID: 473216816815132559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HelpClickButton
+      rect:
+        serializedVersion: 2
+        x: 4898
+        y: 1188
+        width: 311
+        height: 324
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69c50eec927558a10800000000000000
+      internalID: 1911029453964729494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LevelClickButton
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 544
+        width: 852
+        height: 319
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5cb1b7c6818b3920800000000000000
+      internalID: 2971110795056888923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PauseCircleClickButton
+      rect:
+        serializedVersion: 2
+        x: 2308
+        y: 804
+        width: 348
+        height: 351
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8313ad61f49cbe60800000000000000
+      internalID: 7979416404441109389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LoadClickButton
+      rect:
+        serializedVersion: 2
+        x: 2776
+        y: 838
+        width: 811
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41682269edbb6a990800000000000000
+      internalID: -7375000775096629740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SaveClickButton
+      rect:
+        serializedVersion: 2
+        x: 3754
+        y: 807
+        width: 314
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f616bdf44684fd20800000000000000
+      internalID: 3311419256896624375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RestartClickButton
+      rect:
+        serializedVersion: 2
+        x: 4135
+        y: 807
+        width: 314
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6a4775e04a82340800000000000000
+      internalID: 4839298181113358023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MusicClickButton
+      rect:
+        serializedVersion: 2
+        x: 4516
+        y: 804
+        width: 315
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec86db8d3e45ced30800000000000000
+      internalID: 4462034668387920078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LockClickButton
+      rect:
+        serializedVersion: 2
+        x: 4898
+        y: 804
+        width: 323
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64f58629f1524cd00800000000000000
+      internalID: 991958635458879302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: StoreClickButton
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 510
+        width: 967
+        height: 327
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4b6934fd59dc4ac0800000000000000
+      internalID: -3869478982265509044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AllLevelClickButton
+      rect:
+        serializedVersion: 2
+        x: 2145
+        y: 60
+        width: 1439
+        height: 499
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c67136b21d11017c0800000000000000
+      internalID: -4102759670460770452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UpClickButton
+      rect:
+        serializedVersion: 2
+        x: 4163
+        y: 438
+        width: 299
+        height: 308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2b6caafb5287010800000000000000
+      internalID: 1186740006946255542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RestartBigClickButton
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 72
+        width: 967
+        height: 368
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 735fe74e9f4af9380800000000000000
+      internalID: -8962263340256660169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LeftClickButton
+      rect:
+        serializedVersion: 2
+        x: 3789
+        y: 72
+        width: 301
+        height: 308
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfd04e1f5419e2b0800000000000000
+      internalID: -5554886266622779453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DownClickButton
+      rect:
+        serializedVersion: 2
+        x: 4163
+        y: 72
+        width: 299
+        height: 312
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ae01455db37598c0800000000000000
+      internalID: -3993158237577736536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RightClickButton
+      rect:
+        serializedVersion: 2
+        x: 4538
+        y: 72
+        width: 301
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a05779bb76450f0d0800000000000000
+      internalID: -3391117714904353526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DONT_USE
+      rect:
+        serializedVersion: 2
+        x: 4913
+        y: 72
+        width: 308
+        height: 311
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6eb0f731b5d62fa70800000000000000
+      internalID: 8859263654927731686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 94c3c85c8ebaf0b4aac616e0d0c710bd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      AllLevelClickButton: -4102759670460770452
+      CheckClickButton: 1049603734173430336
+      ClickedButton_1: -5332111696064458888
+      DONT_USE: 8859263654927731686
+      DownClickButton: -3993158237577736536
+      HelpClickButton: 1911029453964729494
+      LeftClickButton: -5554886266622779453
+      LevelClickButton: 2971110795056888923
+      LoadClickButton: -7375000775096629740
+      LockClickButton: 991958635458879302
+      MenuBigClickButton: -2255352575795607958
+      MenuClickButton: 1665859018167110342
+      MusicClickButton: 4462034668387920078
+      OptionBigClickButton: -7101789826432327534
+      PauseCircleClickButton: 7979416404441109389
+      PauseClickButton: -1955038337030232743
+      PlayClickButton: 722617801118072319
+      PowerClickButton: -2907958839124111612
+      RestartBigClickButton: -8962263340256660169
+      RestartClickButton: 4839298181113358023
+      RightClickButton: -3391117714904353526
+      SaveClickButton: 3311419256896624375
+      SettingsClickButton: 473216816815132559
+      StartClickButton: -1923783993790238136
+      StoreClickButton: -3869478982265509044
+      UpClickButton: 1186740006946255542
+      XClickButton: -843492095249062940
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
