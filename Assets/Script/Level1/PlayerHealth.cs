@@ -1,88 +1,87 @@
-using System;
 using UnityEngine;
+using System; // Required for Action/Events
 
-/// <summary>
-/// Tracks the player's health and broadcasts changes so the UI can react.
-/// Attach this to the Player GameObject.
-/// </summary>
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Health")]
-    [Tooltip("Maximum / starting health (set to 5 for 5 hearts)")]
-    public int maxHealth = 5;
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 5;
+    private int currentHealth;
 
-    /// <summary>Current health — read from UI or other systems.</summary>
-    public int CurrentHealth { get; private set; }
-
-    [Header("Invincibility Frames")]
-    [Tooltip("Seconds of invincibility after taking a hit")]
-    public float invincibilityDuration = 1f;
-
-    /// <summary>
-    /// Set this to true while the player is guarding.
-    /// PlayerController sets this every frame via SetGuarding().
-    /// </summary>
-    public bool IsGuarding { get; private set; }
-
-    /// <summary>Fired whenever health changes. int param = new current health.</summary>
-    public event Action<int> OnHealthChanged;
-
-    /// <summary>Fired once when the player dies.</summary>
-    public event Action OnPlayerDied;
-
+    [Header("Invincibility Configuration")]
+    [SerializeField] private float invincibilityDuration = 0.5f;
     private float invincibilityTimer;
-    private bool  isDead;
 
-    private void Awake()
+    [Header("UI Manager Link")]
+    [Tooltip("Drag your scene's PauseManager object here to trigger the Game Over screen")]
+    public PauseMenu pauseMenuManager; // Fixed type naming convention to match your script explicitly
+
+    // Team Hooks required by LifeUI.cs and PlayerController.cs
+    public event Action<int> OnHealthChanged;
+    private bool isGuarding;
+
+    // Public property to expose current health safely to LifeUI.cs
+    public int CurrentHealth => currentHealth;
+
+    private void Start()
     {
-        CurrentHealth = maxHealth;
+        currentHealth = maxHealth;
+        // Broadcast initial health state to UI on start
+        OnHealthChanged?.Invoke(currentHealth);
     }
 
     private void Update()
     {
-        if (invincibilityTimer > 0f)
-            invincibilityTimer -= Time.deltaTime;
-    }
-
-    /// <summary>Called by PlayerController every frame to sync guard state.</summary>
-    public void SetGuarding(bool guarding)
-    {
-        IsGuarding = guarding;
-    }
-
-    /// <summary>Called by Demon1Controller on contact.</summary>
-    public void TakeDamage(int amount)
-    {
-        if (isDead || invincibilityTimer > 0f) return;
-
-        // Guard blocks all damage
-        if (IsGuarding)
+        if (invincibilityTimer > 0)
         {
-            Debug.Log("[PlayerHealth] Damage blocked by guard!");
+            invincibilityTimer -= Time.deltaTime;
+        }
+    }
+
+    /// <summary>
+    /// Call this function when an enemy hit registers on the player.
+    /// </summary>
+    public void TakeDamage(int damageAmount)
+    {
+        // If player is guarding or invincible, block the damage
+        if (isGuarding || invincibilityTimer > 0)
+        {
+            Debug.Log("Hit blocked or player is invincible!");
             return;
         }
 
-        CurrentHealth = Mathf.Max(0, CurrentHealth - amount);
-        invincibilityTimer = invincibilityDuration;
+        currentHealth -= damageAmount;
+        invincibilityTimer = invincibilityDuration; // Trigger i-frames
 
-        Debug.Log($"[PlayerHealth] Took {amount} damage. HP: {CurrentHealth}/{maxHealth}");
+        Debug.Log($"Player hit! Current Health: {currentHealth}");
 
-        OnHealthChanged?.Invoke(CurrentHealth);
+        // Safely tell LifeUI.cs to update your heart visuals
+        OnHealthChanged?.Invoke(currentHealth);
 
-        if (CurrentHealth <= 0)
-            Die();
+        if (currentHealth <= 0)
+        {
+            ExecuteGameOver();
+        }
     }
 
-    private void Die()
+    /// <summary>
+    /// Called by PlayerController.cs to toggle shield blocking states
+    /// </summary>
+    public void SetGuarding(bool guardingState)
     {
-        if (isDead) return;
-        isDead = true;
+        isGuarding = guardingState;
+    }
 
-        Debug.Log("[PlayerHealth] Player has died.");
-        OnPlayerDied?.Invoke();
+    private void ExecuteGameOver()
+    {
+        Debug.Log("💀 Player health reached zero! Triggering Game Over panel.");
 
-        // Uncomment to reload the scene on death:
-        // UnityEngine.SceneManagement.SceneManager.LoadScene(
-        //     UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        if (pauseMenuManager != null)
+        {
+            pauseMenuManager.TriggerGameOver();
+        }
+        else
+        {
+            Debug.LogError("The PauseMenuManager reference is missing on the Player GameObject!");
+        }
     }
 }
