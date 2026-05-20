@@ -4,15 +4,6 @@ using UnityEngine;
 /// <summary>
 /// Demon1 AI — wanders freely around the dungeon, respects walls,
 /// damages the player on contact, and dies when hit by the player's attack.
-///
-/// ── Setup on the Demon1 Prefab ──────────────────────────────────────────
-///  • Rigidbody2D   : Gravity Scale = 0, Freeze Rotation Z, Collision Detection = Continuous
-///  • CircleCollider2D (or CapsuleCollider2D) — isTrigger = FALSE  (physics body)
-///  • Animator      : assign the Demon1 animator controller
-///  • SpriteRenderer
-///  • Tag the Player GameObject as "Player"
-///  • Tag this GameObject as "Enemy"
-/// ────────────────────────────────────────────────────────────────────────
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -43,29 +34,29 @@ public class Demon1Controller : MonoBehaviour
 
     // ── Animator parameter hashes ─────────────────────────────────────────
     private static readonly int AnimIsWalking = Animator.StringToHash("isWalking");
-    private static readonly int AnimIsDead    = Animator.StringToHash("isDead");
+    private static readonly int AnimIsDead = Animator.StringToHash("isDead");
 
     // ── Private state ─────────────────────────────────────────────────────
-    private Rigidbody2D   rb;
-    private Animator      anim;
+    private Rigidbody2D rb;
+    private Animator anim;
     private SpriteRenderer sr;
 
     private Vector2 wanderDirection;
-    private float   wanderTimer;
+    private float wanderTimer;
 
-    private bool  isDead;
+    private bool isDead;
     private float damageTimer;
 
     // ─────────────────────────────────────────────────────────────────────
     private void Awake()
     {
-        rb   = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-        sr   = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
 
         // Prevent demon from being rotated by physics
         rb.freezeRotation = true;
-        rb.gravityScale   = 0f;
+        rb.gravityScale = 0f;
 
         PickNewDirection();
     }
@@ -102,10 +93,6 @@ public class Demon1Controller : MonoBehaviour
     }
 
     // ── Wall / obstacle collision ─────────────────────────────────────────
-    /// <summary>
-    /// When the demon hits a wall (non-trigger collider that isn't the player),
-    /// immediately pick a new random direction so it bounces away.
-    /// </summary>
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (isDead) return;
@@ -117,7 +104,7 @@ public class Demon1Controller : MonoBehaviour
         // Bounce: reflect direction off the collision normal and add randomness
         Vector2 normal = col.contacts[0].normal;
         wanderDirection = Vector2.Reflect(wanderDirection, normal).normalized;
-        // Add a small random angle so demons don't get stuck in corners
+
         float angle = Random.Range(-45f, 45f) * Mathf.Deg2Rad;
         float cos = Mathf.Cos(angle), sin = Mathf.Sin(angle);
         wanderDirection = new Vector2(
@@ -135,7 +122,6 @@ public class Demon1Controller : MonoBehaviour
         if (!col.gameObject.CompareTag("Player")) return;
         if (damageTimer > 0f) return;
 
-        // Try to find a health component on the player
         PlayerHealth playerHealth = col.gameObject.GetComponent<PlayerHealth>();
         if (playerHealth != null)
             playerHealth.TakeDamage(contactDamage);
@@ -158,7 +144,13 @@ public class Demon1Controller : MonoBehaviour
 
         // Play death animation
         anim.SetBool(AnimIsWalking, false);
-        anim.SetBool(AnimIsDead,    true);
+        anim.SetBool(AnimIsDead, true);
+
+        // SAFELY reporting enemy defeat to the dynamic LevelManager counter
+        if (LevelManager.Instance != null)
+        {
+            LevelManager.Instance.RegisterEnemyDeath();
+        }
 
         // Destroy after the death animation finishes
         Destroy(gameObject, deathAnimDuration);
@@ -172,7 +164,6 @@ public class Demon1Controller : MonoBehaviour
 
         wanderTimer = Random.Range(minWanderTime, maxWanderTime);
 
-        // Update walk animation
         if (anim != null)
             anim.SetBool(AnimIsWalking, true);
     }
