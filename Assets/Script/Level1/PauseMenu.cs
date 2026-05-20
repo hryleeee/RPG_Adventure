@@ -1,84 +1,90 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem; // REQUIRED: Tells the script to use the modern input package!
+using UnityEngine.InputSystem; // CRITICAL: Speaks native Unity 6 Input package drivers
 
 public class PauseMenu : MonoBehaviour
 {
-    [Header("UI Panels")]
-    [Tooltip("Drag your PauseMenuPanel container GameObject here")]
+    [Header("UI Panels Container Layout")]
+    [Tooltip("Drag your Canvas PauseMenuPanel here")]
     [SerializeField] private GameObject pauseMenuPanel;
 
-    [Tooltip("Drag your unique Pause Options Menu layout container here (if you have one)")]
-    [SerializeField] private GameObject pauseSettingsPanel;
+    [Tooltip("Drag your Canvas GameOverPanel here")]
+    [SerializeField] private GameObject gameOverPanel;
 
-    private bool isPaused = false;
+    private bool isPaused;
+    private bool isGameOver;
 
     private void Start()
     {
-        // Enforce a completely clean scene canvas baseline on level boot
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-        if (pauseSettingsPanel != null) pauseSettingsPanel.SetActive(false);
+        // Force state cleanup on boot to clear out lifecycle timing glitches
+        isPaused = false;
+        isGameOver = false;
+        Time.timeScale = 1f;
 
-        Time.timeScale = 1f; // Standard time flow speed
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
     }
 
     private void Update()
     {
-        // Pure Unity 6 New Input System syntax - This will NEVER throw an InvalidOperationException!
+        // If the player is dead, prevent keyboard input checks completely
+        if (isGameOver) return;
+
+        // Modern Input System check: Listens flawlessly for the Escape Key
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (pauseSettingsPanel != null && pauseSettingsPanel.activeSelf)
+            if (isPaused)
             {
-                ClosePauseSettings();
-            }
-            else if (isPaused)
-            {
-                Resume();
+                ResumeGame();
             }
             else
             {
-                Pause();
+                PauseGame();
             }
         }
     }
 
-    public void Resume()
+    public void ResumeGame()
     {
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-        if (pauseSettingsPanel != null) pauseSettingsPanel.SetActive(false);
-
-        Time.timeScale = 1f; // Resume normal gameplay timing
+        Time.timeScale = 1f;
         isPaused = false;
+        Debug.Log("▶️ Game Resumed.");
     }
 
-    public void Pause()
+    public void PauseGame()
     {
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
-        Time.timeScale = 0f; // Freeze all physics updates and character movements
+        Time.timeScale = 0f; // Freeze game physics entirely
         isPaused = true;
+        Debug.Log("⏸️ Game Paused.");
+    }
+
+    /// <summary>
+    /// Called directly by PlayerHealth.cs when lives touch absolute zero!
+    /// </summary>
+    public void TriggerGameOver()
+    {
+        if (isGameOver) return; // Prevent double trigger hazards
+
+        isGameOver = true;
+        Time.timeScale = 0f; // Freeze reality completely solid
+
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false); // Cleanly hide pause frame
+        if (gameOverPanel != null) gameOverPanel.SetActive(true);    // Display game over screen overlay
+
+        Debug.Log("💀 Game Over Interface Displayed Masterfully!");
     }
 
     public void RestartGame()
     {
-        Time.timeScale = 1f; // CRITICAL: Always unfreeze time BEFORE reloading!
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void OpenPauseSettings()
-    {
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-        if (pauseSettingsPanel != null) pauseSettingsPanel.SetActive(true); // <-- Looking for this!
-    }
-
-    public void ClosePauseSettings()
-    {
-        if (pauseSettingsPanel != null) pauseSettingsPanel.SetActive(false);
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
+        Time.timeScale = 1f; // ALWAYS unfreeze time scaling before changing scenes
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ExitToMenu()
     {
-        Time.timeScale = 1f; // CRITICAL: Always unfreeze time BEFORE scene changing!
-        SceneManager.LoadScene("GameMenu");
+        Time.timeScale = 1f; // ALWAYS unfreeze time scaling before traveling back home
+        SceneManager.LoadScene("GameMenu"); // Adjust if your main menu asset file uses a different string casing name
     }
 }
