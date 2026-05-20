@@ -1,88 +1,88 @@
 fileFormatVersion: 2
-guid: 0114a437fd64afd4fa6a4197d410c91e
+guid: 856bf637b0d8f7049b851401ceb74205
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8894201953851282084
-    second: Buttons_0
+      213: 3058289777631679250
+    second: 2ClickedButton_0
   - first:
-      213: 7664807735657788756
-    second: Buttons_1
+      213: 896697012344929980
+    second: 2ClickedButton_1
   - first:
-      213: -5402412272178277761
-    second: Buttons_2
+      213: 5673760640223146998
+    second: 2ClickedButton_2
   - first:
-      213: 2013261503205373015
-    second: Buttons_3
+      213: 1298205156459377738
+    second: 2ClickedButton_3
   - first:
-      213: 3760674464881954987
-    second: Buttons_4
+      213: 3965374938985943529
+    second: 2ClickedButton_4
   - first:
-      213: -7811504096720598664
-    second: Buttons_5
+      213: 4600145933575670183
+    second: 2ClickedButton_5
   - first:
-      213: -7814535901586335685
-    second: Buttons_6
+      213: 438132117947680705
+    second: 2ClickedButton_6
   - first:
-      213: -3243065930256096816
-    second: Buttons_7
+      213: -5344104478445786792
+    second: 2ClickedButton_7
   - first:
-      213: -5316896731886317114
-    second: Buttons_8
+      213: 1544135802757429292
+    second: 2ClickedButton_8
   - first:
-      213: 7219830438018454713
-    second: Buttons_9
+      213: -8937358104807934120
+    second: 2ClickedButton_9
   - first:
-      213: 3100856887975758742
-    second: Buttons_10
+      213: 5493114464470186070
+    second: 2ClickedButton_10
   - first:
-      213: 4520375771122408675
-    second: Buttons_11
+      213: -4863602878877011182
+    second: 2ClickedButton_11
   - first:
-      213: -5179577679047867133
-    second: Buttons_12
+      213: -1149349023162335627
+    second: 2ClickedButton_12
   - first:
-      213: -3910703144431735636
-    second: Buttons_13
+      213: 1348146358343593590
+    second: 2ClickedButton_13
   - first:
-      213: -8085034249037642075
-    second: Buttons_14
+      213: 633346388546466182
+    second: 2ClickedButton_14
   - first:
-      213: 2002449761939175838
-    second: Buttons_15
+      213: 6694137732774352804
+    second: 2ClickedButton_15
   - first:
-      213: -8297432600200059137
-    second: Buttons_16
+      213: -2092086852657728400
+    second: 2ClickedButton_16
   - first:
-      213: 6581902851085628065
-    second: Buttons_17
+      213: -5606764870234530254
+    second: 2ClickedButton_17
   - first:
-      213: 5873922061639052055
-    second: Buttons_18
+      213: -3207788293116449310
+    second: 2ClickedButton_18
   - first:
-      213: 1037043418157672090
-    second: Buttons_19
+      213: 272335158648301873
+    second: 2ClickedButton_19
   - first:
-      213: 6246160581572741293
-    second: Buttons_20
+      213: -6362921319794964802
+    second: 2ClickedButton_20
   - first:
-      213: 7671842712487638309
-    second: Buttons_21
+      213: 6716295743296174482
+    second: 2ClickedButton_21
   - first:
-      213: 6994526540242742011
-    second: Buttons_22
+      213: -8358585783913552065
+    second: 2ClickedButton_22
   - first:
-      213: -6134105900329393699
-    second: Buttons_23
+      213: 6010340048870463798
+    second: 2ClickedButton_23
   - first:
-      213: -2696679226240509379
-    second: Buttons_24
+      213: -2622552997120186735
+    second: 2ClickedButton_24
   - first:
-      213: -3052080053349701864
-    second: Buttons_25
+      213: 8862422525465791237
+    second: 2ClickedButton_25
   - first:
-      213: -7656262186137238201
-    second: Buttons_26
+      213: 2422148937251053648
+    second: 2ClickedButton_26
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -191,7 +191,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StartButton
+      name: 2ClickedButton_0
       rect:
         serializedVersion: 2
         x: 904
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4a214e3bd8d8e6b70800000000000000
-      internalID: 8894201953851282084
+      spriteID: 213d1f7695a317a20800000000000000
+      internalID: 3058289777631679250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ExitButton
+      name: 2ClickedButton_1
       rect:
         serializedVersion: 2
         x: 2323
@@ -228,14 +228,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4557c83960ede5a60800000000000000
-      internalID: 7664807735657788756
+      spriteID: cbe39fb8e25b17c00800000000000000
+      internalID: 896697012344929980
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MenuButton
+      name: 2ClickedButton_2
       rect:
         serializedVersion: 2
         x: 3754
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f725a9269a6c605b0800000000000000
-      internalID: -5402412272178277761
+      spriteID: 6f3f71dcd3f3dbe40800000000000000
+      internalID: 5673760640223146998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PowerButton
+      name: 2ClickedButton_3
       rect:
         serializedVersion: 2
         x: 4132
@@ -272,14 +272,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7547682abaa80fb10800000000000000
-      internalID: 2013261503205373015
+      spriteID: a44775c26b6240210800000000000000
+      internalID: 1298205156459377738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: CheckButton
+      name: 2ClickedButton_4
       rect:
         serializedVersion: 2
         x: 4516
@@ -294,14 +294,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ba0db2b3089903430800000000000000
-      internalID: 3760674464881954987
+      spriteID: 9e15e7f5f77d70730800000000000000
+      internalID: 3965374938985943529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XButton
+      name: 2ClickedButton_5
       rect:
         serializedVersion: 2
         x: 4898
@@ -316,14 +316,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 879c5714966f79390800000000000000
-      internalID: -7811504096720598664
+      spriteID: 7a94cbd9a5007df30800000000000000
+      internalID: 4600145933575670183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MenuBigButton
+      name: 2ClickedButton_6
       rect:
         serializedVersion: 2
         x: 95
@@ -338,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b38d86d20013d8390800000000000000
-      internalID: -7814535901586335685
+      spriteID: 1c706f607de841600800000000000000
+      internalID: 438132117947680705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: OptionBigButton
+      name: 2ClickedButton_7
       rect:
         serializedVersion: 2
         x: 1132
@@ -360,14 +360,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0d1e9eb08b05ef2d0800000000000000
-      internalID: -3243065930256096816
+      spriteID: 8592aa78a4de5d5b0800000000000000
+      internalID: -5344104478445786792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PlayButton
+      name: 2ClickedButton_8
       rect:
         serializedVersion: 2
         x: 3754
@@ -382,14 +382,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6c11b7ca7969636b0800000000000000
-      internalID: -5316896731886317114
+      spriteID: c28b158d45fdd6510800000000000000
+      internalID: 1544135802757429292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PauseButton
+      name: 2ClickedButton_9
       rect:
         serializedVersion: 2
         x: 4132
@@ -404,14 +404,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b494a4f78df13460800000000000000
-      internalID: 7219830438018454713
+      spriteID: 857f674e72028f380800000000000000
+      internalID: -8937358104807934120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SettingsButton
+      name: 2ClickedButton_10
       rect:
         serializedVersion: 2
         x: 4516
@@ -426,14 +426,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69b4e1b19e4780b20800000000000000
-      internalID: 3100856887975758742
+      spriteID: 6583e4d60867b3c40800000000000000
+      internalID: 5493114464470186070
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HelpButton
+      name: 2ClickedButton_11
       rect:
         serializedVersion: 2
         x: 4898
@@ -448,14 +448,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3ec980950d99bbe30800000000000000
-      internalID: 4520375771122408675
+      spriteID: 213f7fb33f2018cb0800000000000000
+      internalID: -4863602878877011182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LevelsButton
+      name: 2ClickedButton_12
       rect:
         serializedVersion: 2
         x: 1207
@@ -470,14 +470,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3054fc12b817e18b0800000000000000
-      internalID: -5179577679047867133
+      spriteID: 57e77772721bc00f0800000000000000
+      internalID: -1149349023162335627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PauseCircleButton
+      name: 2ClickedButton_13
       rect:
         serializedVersion: 2
         x: 2310
@@ -492,14 +492,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: caca42eb5346ab9c0800000000000000
-      internalID: -3910703144431735636
+      spriteID: 67e6e4a58f395b210800000000000000
+      internalID: 1348146358343593590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: loadButton
+      name: 2ClickedButton_14
       rect:
         serializedVersion: 2
         x: 2776
@@ -514,14 +514,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a68e35df203ccf80800000000000000
-      internalID: -8085034249037642075
+      spriteID: 681b61d4f291ac800800000000000000
+      internalID: 633346388546466182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SaveButton
+      name: 2ClickedButton_15
       rect:
         serializedVersion: 2
         x: 3754
@@ -536,14 +536,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9933f4f2712acb10800000000000000
-      internalID: 2002449761939175838
+      spriteID: 4a7dd870dca56ec50800000000000000
+      internalID: 6694137732774352804
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RestartButton
+      name: 2ClickedButton_16
       rect:
         serializedVersion: 2
         x: 4135
@@ -558,14 +558,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ff66455030999dc80800000000000000
-      internalID: -8297432600200059137
+      spriteID: 0743214871a67f2e0800000000000000
+      internalID: -2092086852657728400
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MusicButton
+      name: MusicOFFButton
       rect:
         serializedVersion: 2
         x: 4516
@@ -580,14 +580,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a2f61945cd975b50800000000000000
-      internalID: 6581902851085628065
+      spriteID: 23e18827e05c032b0800000000000000
+      internalID: -5606764870234530254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LockButton
+      name: 2ClickedButton_18
       rect:
         serializedVersion: 2
         x: 4898
@@ -602,14 +602,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71b63526efc548150800000000000000
-      internalID: 5873922061639052055
+      spriteID: 2ed23220b85ab73d0800000000000000
+      internalID: -3207788293116449310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StoreButton
+      name: 2ClickedButton_19
       rect:
         serializedVersion: 2
         x: 95
@@ -624,14 +624,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a96e1fb8e71546e00800000000000000
-      internalID: 1037043418157672090
+      spriteID: 139e417426787c300800000000000000
+      internalID: 272335158648301873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LevelBoard
+      name: 2ClickedButton_20
       rect:
         serializedVersion: 2
         x: 2148
@@ -646,14 +646,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: da8c0b294f1dea650800000000000000
-      internalID: 6246160581572741293
+      spriteID: eb68cd795cc52b7a0800000000000000
+      internalID: -6362921319794964802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpButton
+      name: 2ClickedButton_21
       rect:
         serializedVersion: 2
         x: 4163
@@ -668,14 +668,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 525be72cc4cd77a60800000000000000
-      internalID: 7671842712487638309
+      spriteID: 299f2a1e463153d50800000000000000
+      internalID: 6716295743296174482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RestartBigButton
+      name: 2ClickedButton_22
       rect:
         serializedVersion: 2
         x: 95
@@ -690,14 +690,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bfae53b64dc811160800000000000000
-      internalID: 6994526540242742011
+      spriteID: f37e335e386500c80800000000000000
+      internalID: -8358585783913552065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LeftButton
+      name: 2ClickedButton_23
       rect:
         serializedVersion: 2
         x: 3789
@@ -712,14 +712,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dd12d3cfe274fdaa0800000000000000
-      internalID: -6134105900329393699
+      spriteID: 6395a382e64096350800000000000000
+      internalID: 6010340048870463798
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DownButton
+      name: 2ClickedButton_24
       rect:
         serializedVersion: 2
         x: 4163
@@ -734,14 +734,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3a52c60888739ad0800000000000000
-      internalID: -2696679226240509379
+      spriteID: 196e30aa1f1da9bd0800000000000000
+      internalID: -2622552997120186735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RightButton
+      name: 2ClickedButton_25
       rect:
         serializedVersion: 2
         x: 4538
@@ -756,14 +756,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8172902bc55d4a5d0800000000000000
-      internalID: -3052080053349701864
+      spriteID: 50b0fcfe456adfa70800000000000000
+      internalID: 8862422525465791237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DO_NOT_USE
+      name: 2ClickedButton_26
       rect:
         serializedVersion: 2
         x: 4910
@@ -778,8 +778,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 745c8083b1e7fb590800000000000000
-      internalID: -7656262186137238201
+      spriteID: 05060f510a33d9120800000000000000
+      internalID: 2422148937251053648
       vertices: []
       indices: 
       edges: []
@@ -788,7 +788,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d810de4ef1c78974d983a75fc3adb866
+    spriteID: 5656f9b19c82e9649be742f1e1c699b9
     internalID: 0
     vertices: []
     indices: 
@@ -798,33 +798,33 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CheckButton: 3760674464881954987
-      DO_NOT_USE: -7656262186137238201
-      DownButton: -2696679226240509379
-      ExitButton: 7664807735657788756
-      HelpButton: 4520375771122408675
-      LeftButton: -6134105900329393699
-      LevelBoard: 6246160581572741293
-      LevelsButton: -5179577679047867133
-      LockButton: 5873922061639052055
-      MenuBigButton: -7814535901586335685
-      MenuButton: -5402412272178277761
-      MusicButton: 6581902851085628065
-      OptionBigButton: -3243065930256096816
-      PauseButton: 7219830438018454713
-      PauseCircleButton: -3910703144431735636
-      PlayButton: -5316896731886317114
-      PowerButton: 2013261503205373015
-      RestartBigButton: 6994526540242742011
-      RestartButton: -8297432600200059137
-      RightButton: -3052080053349701864
-      SaveButton: 2002449761939175838
-      SettingsButton: 3100856887975758742
-      StartButton: 8894201953851282084
-      StoreButton: 1037043418157672090
-      UpButton: 7671842712487638309
-      XButton: -7811504096720598664
-      loadButton: -8085034249037642075
+      2ClickedButton_0: 3058289777631679250
+      2ClickedButton_1: 896697012344929980
+      2ClickedButton_10: 5493114464470186070
+      2ClickedButton_11: -4863602878877011182
+      2ClickedButton_12: -1149349023162335627
+      2ClickedButton_13: 1348146358343593590
+      2ClickedButton_14: 633346388546466182
+      2ClickedButton_15: 6694137732774352804
+      2ClickedButton_16: -2092086852657728400
+      2ClickedButton_18: -3207788293116449310
+      2ClickedButton_19: 272335158648301873
+      2ClickedButton_2: 5673760640223146998
+      2ClickedButton_20: -6362921319794964802
+      2ClickedButton_21: 6716295743296174482
+      2ClickedButton_22: -8358585783913552065
+      2ClickedButton_23: 6010340048870463798
+      2ClickedButton_24: -2622552997120186735
+      2ClickedButton_25: 8862422525465791237
+      2ClickedButton_26: 2422148937251053648
+      2ClickedButton_3: 1298205156459377738
+      2ClickedButton_4: 3965374938985943529
+      2ClickedButton_5: 4600145933575670183
+      2ClickedButton_6: 438132117947680705
+      2ClickedButton_7: -5344104478445786792
+      2ClickedButton_8: 1544135802757429292
+      2ClickedButton_9: -8937358104807934120
+      MusicOFFButton: -5606764870234530254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

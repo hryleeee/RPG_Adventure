@@ -1,88 +1,88 @@
 fileFormatVersion: 2
-guid: 04cc46511e6dcf540bc3a2fd54679986
+guid: 478f0cb46ab8a514bb055e7d0c59d7b2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1923783993790238136
-    second: ClickedButton_0
+      213: 227966557101677201
+    second: 2Buttons_0
   - first:
-      213: -5332111696064458888
-    second: ClickedButton_1
+      213: 2318859602290865910
+    second: 2Buttons_1
   - first:
-      213: 1665859018167110342
-    second: ClickedButton_2
+      213: 3858880950304793197
+    second: 2Buttons_2
   - first:
-      213: -2907958839124111612
-    second: ClickedButton_3
+      213: 8175803318789843822
+    second: 2Buttons_3
   - first:
-      213: 1049603734173430336
-    second: ClickedButton_4
+      213: 4739840755553041099
+    second: 2Buttons_4
   - first:
-      213: -843492095249062940
-    second: ClickedButton_5
+      213: -4895121349918385624
+    second: 2Buttons_5
   - first:
-      213: -2255352575795607958
-    second: ClickedButton_6
+      213: -5383338071801645417
+    second: 2Buttons_6
   - first:
-      213: -7101789826432327534
-    second: ClickedButton_7
+      213: 7921536611002472624
+    second: 2Buttons_7
   - first:
-      213: 722617801118072319
-    second: ClickedButton_8
+      213: 4693240003116165031
+    second: 2Buttons_8
   - first:
-      213: -1955038337030232743
-    second: ClickedButton_9
+      213: -5128019466919862670
+    second: 2Buttons_9
   - first:
-      213: 473216816815132559
-    second: ClickedButton_10
+      213: -3033097761542620191
+    second: 2Buttons_10
   - first:
-      213: 1911029453964729494
-    second: ClickedButton_11
+      213: 3065841112808183986
+    second: 2Buttons_11
   - first:
-      213: 2971110795056888923
-    second: ClickedButton_12
+      213: -5311802939823023761
+    second: 2Buttons_12
   - first:
-      213: 7979416404441109389
-    second: ClickedButton_13
+      213: 4116842141343291998
+    second: 2Buttons_13
   - first:
-      213: -7375000775096629740
-    second: ClickedButton_14
+      213: -3941976204058514578
+    second: 2Buttons_14
   - first:
-      213: 3311419256896624375
-    second: ClickedButton_15
+      213: 903180697615969625
+    second: 2Buttons_15
   - first:
-      213: 4839298181113358023
-    second: ClickedButton_16
+      213: 6470825833068494721
+    second: 2Buttons_16
   - first:
-      213: 4462034668387920078
-    second: ClickedButton_17
+      213: 2262996002639423641
+    second: 2Buttons_17
   - first:
-      213: 991958635458879302
-    second: ClickedButton_18
+      213: -3622595025386242670
+    second: 2Buttons_18
   - first:
-      213: -3869478982265509044
-    second: ClickedButton_19
+      213: -8148285036249241460
+    second: 2Buttons_19
   - first:
-      213: -4102759670460770452
-    second: ClickedButton_20
+      213: -160593264718297214
+    second: 2Buttons_20
   - first:
-      213: 1186740006946255542
-    second: ClickedButton_21
+      213: -6865936536901563618
+    second: 2Buttons_21
   - first:
-      213: -8962263340256660169
-    second: ClickedButton_22
+      213: 8766200044922185797
+    second: 2Buttons_22
   - first:
-      213: -5554886266622779453
-    second: ClickedButton_23
+      213: 6000602304650483095
+    second: 2Buttons_23
   - first:
-      213: -3993158237577736536
-    second: ClickedButton_24
+      213: 406687222898042655
+    second: 2Buttons_24
   - first:
-      213: -3391117714904353526
-    second: ClickedButton_25
+      213: -1229036889853085582
+    second: 2Buttons_25
   - first:
-      213: 8859263654927731686
-    second: ClickedButton_26
+      213: 2637498324482749304
+    second: 2Buttons_26
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -191,51 +191,51 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: StartClickButton
+      name: 2Buttons_0
       rect:
         serializedVersion: 2
         x: 904
         y: 1351
         width: 1333
-        height: 567
+        height: 564
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 842fc8976a85d45e0800000000000000
-      internalID: -1923783993790238136
+      spriteID: 19ad6b83066e92300800000000000000
+      internalID: 227966557101677201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ClickedButton_1
+      name: 2Buttons_1
       rect:
         serializedVersion: 2
-        x: 2326
+        x: 2323
         y: 1348
-        width: 1247
+        width: 1250
         height: 539
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87f4f55c9a88006b0800000000000000
-      internalID: -5332111696064458888
+      spriteID: 6f6fc8eb58e3e2020800000000000000
+      internalID: 2318859602290865910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MenuClickButton
+      name: 2Buttons_2
       rect:
         serializedVersion: 2
         x: 3754
@@ -243,263 +243,263 @@ TextureImporter:
         width: 314
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6ca4bbf63f15e1710800000000000000
-      internalID: 1665859018167110342
+      spriteID: d62607177cf7d8530800000000000000
+      internalID: 3858880950304793197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PowerClickButton
-      rect:
-        serializedVersion: 2
-        x: 4135
-        y: 1576
-        width: 314
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 40fcc84c7dad4a7d0800000000000000
-      internalID: -2907958839124111612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: CheckClickButton
-      rect:
-        serializedVersion: 2
-        x: 4516
-        y: 1576
-        width: 312
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 042b4520901f09e00800000000000000
-      internalID: 1049603734173430336
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: XClickButton
-      rect:
-        serializedVersion: 2
-        x: 4898
-        y: 1576
-        width: 311
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4e364db88605b44f0800000000000000
-      internalID: -843492095249062940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MenuBigClickButton
-      rect:
-        serializedVersion: 2
-        x: 98
-        y: 922
-        width: 961
-        height: 365
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a66c07c18c063b0e0800000000000000
-      internalID: -2255352575795607958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: OptionBigClickButton
-      rect:
-        serializedVersion: 2
-        x: 1132
-        y: 922
-        width: 942
-        height: 336
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 290a40e97cf517d90800000000000000
-      internalID: -7101789826432327534
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PlayClickButton
-      rect:
-        serializedVersion: 2
-        x: 3754
-        y: 1188
-        width: 314
-        height: 324
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ffd3400cf01470a00800000000000000
-      internalID: 722617801118072319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PauseClickButton
+      name: 2Buttons_3
       rect:
         serializedVersion: 2
         x: 4132
-        y: 1189
+        y: 1576
         width: 317
-        height: 323
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 955ea0f9dfe4ed4e0800000000000000
-      internalID: -1955038337030232743
+      spriteID: e6bade91dc9467170800000000000000
+      internalID: 8175803318789843822
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SettingsClickButton
+      name: 2Buttons_4
+      rect:
+        serializedVersion: 2
+        x: 4516
+        y: 1573
+        width: 312
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca78aeed0c47c140800000000000000
+      internalID: 4739840755553041099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_5
+      rect:
+        serializedVersion: 2
+        x: 4898
+        y: 1576
+        width: 311
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82a1fa55119011cb0800000000000000
+      internalID: -4895121349918385624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_6
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 924
+        width: 964
+        height: 363
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7963d6cbb8a8a45b0800000000000000
+      internalID: -5383338071801645417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_7
+      rect:
+        serializedVersion: 2
+        x: 1132
+        y: 926
+        width: 942
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b8dd0ed393feed60800000000000000
+      internalID: 7921536611002472624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_8
+      rect:
+        serializedVersion: 2
+        x: 3754
+        y: 1188
+        width: 314
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a7646fbaecb12140800000000000000
+      internalID: 4693240003116165031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_9
+      rect:
+        serializedVersion: 2
+        x: 4132
+        y: 1188
+        width: 317
+        height: 329
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27e14f8d67d95d8b0800000000000000
+      internalID: -5128019466919862670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2Buttons_10
       rect:
         serializedVersion: 2
         x: 4516
         y: 1188
         width: 312
-        height: 327
+        height: 333
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f8fc10c0034319600800000000000000
-      internalID: 473216816815132559
+      spriteID: 1eb383ae7a548e5d0800000000000000
+      internalID: -3033097761542620191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: HelpClickButton
+      name: 2Buttons_11
       rect:
         serializedVersion: 2
         x: 4898
         y: 1188
         width: 311
-        height: 324
+        height: 327
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 69c50eec927558a10800000000000000
-      internalID: 1911029453964729494
+      spriteID: 2b858b2af3e0c8a20800000000000000
+      internalID: 3065841112808183986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LevelClickButton
+      name: 2Buttons_12
       rect:
         serializedVersion: 2
         x: 1207
-        y: 544
+        y: 545
         width: 852
-        height: 319
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b5cb1b7c6818b3920800000000000000
-      internalID: 2971110795056888923
+      spriteID: f6919fe8e5fa846b0800000000000000
+      internalID: -5311802939823023761
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PauseCircleClickButton
+      name: 2Buttons_13
       rect:
         serializedVersion: 2
-        x: 2308
-        y: 804
-        width: 348
-        height: 351
+        x: 2310
+        y: 807
+        width: 346
+        height: 348
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8313ad61f49cbe60800000000000000
-      internalID: 7979416404441109389
+      spriteID: e5a10279d16f12930800000000000000
+      internalID: 4116842141343291998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LoadClickButton
+      name: 2Buttons_14
       rect:
         serializedVersion: 2
         x: 2776
@@ -507,43 +507,43 @@ TextureImporter:
         width: 811
         height: 261
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41682269edbb6a990800000000000000
-      internalID: -7375000775096629740
+      spriteID: e6bac0427894b49c0800000000000000
+      internalID: -3941976204058514578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SaveClickButton
+      name: 2Buttons_15
       rect:
         serializedVersion: 2
         x: 3754
         y: 807
         width: 314
-        height: 322
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7f616bdf44684fd20800000000000000
-      internalID: 3311419256896624375
+      spriteID: 95da3692f0eb88c00800000000000000
+      internalID: 903180697615969625
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RestartClickButton
+      name: 2Buttons_16
       rect:
         serializedVersion: 2
         x: 4135
@@ -551,109 +551,109 @@ TextureImporter:
         width: 314
         height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c6a4775e04a82340800000000000000
-      internalID: 4839298181113358023
+      spriteID: 18ff77fafcdfcc950800000000000000
+      internalID: 6470825833068494721
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MusicClickButton
+      name: 2Buttons_17
       rect:
         serializedVersion: 2
         x: 4516
-        y: 804
+        y: 807
         width: 315
         height: 323
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ec86db8d3e45ced30800000000000000
-      internalID: 4462034668387920078
+      spriteID: 998a371efd6c76f10800000000000000
+      internalID: 2262996002639423641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LockClickButton
+      name: 2Buttons_18
       rect:
         serializedVersion: 2
         x: 4898
-        y: 804
-        width: 323
+        y: 807
+        width: 320
         height: 323
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64f58629f1524cd00800000000000000
-      internalID: 991958635458879302
+      spriteID: 29d71ca8405f9bdc0800000000000000
+      internalID: -3622595025386242670
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: StoreClickButton
+      name: 2Buttons_19
       rect:
         serializedVersion: 2
         x: 95
         y: 510
-        width: 967
-        height: 327
+        width: 964
+        height: 320
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c4b6934fd59dc4ac0800000000000000
-      internalID: -3869478982265509044
+      spriteID: c88abb55ee97bee80800000000000000
+      internalID: -8148285036249241460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: AllLevelClickButton
+      name: 2Buttons_20
       rect:
         serializedVersion: 2
-        x: 2145
-        y: 60
-        width: 1439
-        height: 499
+        x: 2148
+        y: 63
+        width: 1432
+        height: 496
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c67136b21d11017c0800000000000000
-      internalID: -4102759670460770452
+      spriteID: 287452fc64575cdf0800000000000000
+      internalID: -160593264718297214
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpClickButton
+      name: 2Buttons_21
       rect:
         serializedVersion: 2
         x: 4163
@@ -661,125 +661,125 @@ TextureImporter:
         width: 299
         height: 308
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6b2b6caafb5287010800000000000000
-      internalID: 1186740006946255542
+      spriteID: e1b4b93d81b47b0a0800000000000000
+      internalID: -6865936536901563618
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RestartBigClickButton
+      name: 2Buttons_22
       rect:
         serializedVersion: 2
         x: 95
-        y: 72
-        width: 967
-        height: 368
+        y: 76
+        width: 964
+        height: 361
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 735fe74e9f4af9380800000000000000
-      internalID: -8962263340256660169
+      spriteID: 548a99bde7cc7a970800000000000000
+      internalID: 8766200044922185797
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: LeftClickButton
+      name: 2Buttons_23
       rect:
         serializedVersion: 2
         x: 3789
-        y: 72
+        y: 76
         width: 301
-        height: 308
+        height: 304
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3cfd04e1f5419e2b0800000000000000
-      internalID: -5554886266622779453
+      spriteID: 7951517e00c664350800000000000000
+      internalID: 6000602304650483095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DownClickButton
+      name: 2Buttons_24
       rect:
         serializedVersion: 2
         x: 4163
-        y: 72
+        y: 73
         width: 299
-        height: 312
+        height: 310
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ae01455db37598c0800000000000000
-      internalID: -3993158237577736536
+      spriteID: f17278fdfd7d4a500800000000000000
+      internalID: 406687222898042655
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: RightClickButton
+      name: 2Buttons_25
       rect:
         serializedVersion: 2
         x: 4538
-        y: 72
-        width: 301
-        height: 311
+        y: 76
+        width: 302
+        height: 304
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a05779bb76450f0d0800000000000000
-      internalID: -3391117714904353526
+      spriteID: 278b47cd57591fee0800000000000000
+      internalID: -1229036889853085582
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DONT_USE
+      name: 2Buttons_26
       rect:
         serializedVersion: 2
-        x: 4913
-        y: 72
+        x: 4910
+        y: 76
         width: 308
-        height: 311
+        height: 304
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6eb0f731b5d62fa70800000000000000
-      internalID: 8859263654927731686
+      spriteID: 8737b7680c64a9420800000000000000
+      internalID: 2637498324482749304
       vertices: []
       indices: 
       edges: []
@@ -788,7 +788,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 94c3c85c8ebaf0b4aac616e0d0c710bd
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -798,33 +798,33 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AllLevelClickButton: -4102759670460770452
-      CheckClickButton: 1049603734173430336
-      ClickedButton_1: -5332111696064458888
-      DONT_USE: 8859263654927731686
-      DownClickButton: -3993158237577736536
-      HelpClickButton: 1911029453964729494
-      LeftClickButton: -5554886266622779453
-      LevelClickButton: 2971110795056888923
-      LoadClickButton: -7375000775096629740
-      LockClickButton: 991958635458879302
-      MenuBigClickButton: -2255352575795607958
-      MenuClickButton: 1665859018167110342
-      MusicClickButton: 4462034668387920078
-      OptionBigClickButton: -7101789826432327534
-      PauseCircleClickButton: 7979416404441109389
-      PauseClickButton: -1955038337030232743
-      PlayClickButton: 722617801118072319
-      PowerClickButton: -2907958839124111612
-      RestartBigClickButton: -8962263340256660169
-      RestartClickButton: 4839298181113358023
-      RightClickButton: -3391117714904353526
-      SaveClickButton: 3311419256896624375
-      SettingsClickButton: 473216816815132559
-      StartClickButton: -1923783993790238136
-      StoreClickButton: -3869478982265509044
-      UpClickButton: 1186740006946255542
-      XClickButton: -843492095249062940
+      2Buttons_0: 227966557101677201
+      2Buttons_1: 2318859602290865910
+      2Buttons_10: -3033097761542620191
+      2Buttons_11: 3065841112808183986
+      2Buttons_12: -5311802939823023761
+      2Buttons_13: 4116842141343291998
+      2Buttons_14: -3941976204058514578
+      2Buttons_15: 903180697615969625
+      2Buttons_16: 6470825833068494721
+      2Buttons_17: 2262996002639423641
+      2Buttons_18: -3622595025386242670
+      2Buttons_19: -8148285036249241460
+      2Buttons_2: 3858880950304793197
+      2Buttons_20: -160593264718297214
+      2Buttons_21: -6865936536901563618
+      2Buttons_22: 8766200044922185797
+      2Buttons_23: 6000602304650483095
+      2Buttons_24: 406687222898042655
+      2Buttons_25: -1229036889853085582
+      2Buttons_26: 2637498324482749304
+      2Buttons_3: 8175803318789843822
+      2Buttons_4: 4739840755553041099
+      2Buttons_5: -4895121349918385624
+      2Buttons_6: -5383338071801645417
+      2Buttons_7: 7921536611002472624
+      2Buttons_8: 4693240003116165031
+      2Buttons_9: -5128019466919862670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

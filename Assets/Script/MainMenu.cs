@@ -1,93 +1,92 @@
 using UnityEngine;
-using System.Collections.Generic; // Required to use the Stacks history system
-using UnityEngine.SceneManagement; // Required if you want to load game levels
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // CRUCIAL: Required to talk to the Image component!
 
 public class MainMenu : MonoBehaviour
 {
     [Header("UI Panels")]
     [SerializeField] private GameObject mainMenuPanel;
     [SerializeField] private GameObject settingsPanel;
-    // You can easily add more panels here later, like:
-    // [SerializeField] private GameObject storePanel;
 
-    // This stack keeps track of the history of screens the player visits
+    [Header("Audio Settings")]
+    [SerializeField] private Image musicButtonImage; // Drag your MusicButton's Image component here
+    [SerializeField] private Sprite musicOnSprite;   // Your default music note sprite
+    [SerializeField] private Sprite musicOffSprite;  // Your muted/disabled music note sprite
+    private bool isMusicOn = true;
+
     private Stack<GameObject> panelHistory = new Stack<GameObject>();
 
     private void Start()
     {
-        // Safety check to ensure the panels are assigned in the inspector
         if (mainMenuPanel == null || settingsPanel == null)
         {
             Debug.LogError("Please assign your MainMenuPanel and SettingsPanel in the Inspector!");
             return;
         }
 
-        // Initialize the menu layout: Show Main Menu, Hide Settings
         mainMenuPanel.SetActive(true);
         settingsPanel.SetActive(false);
 
-        // Clear history and push the main menu as the starting location
         panelHistory.Clear();
         panelHistory.Push(mainMenuPanel);
+
+        // Make sure the button shows the correct sprite when the game starts
+        UpdateMusicButtonUI();
     }
 
-    /// <summary>
-    /// Opens a new panel and safely hides the current active panel.
-    /// </summary>
+    public void ToggleMusic()
+    {
+        isMusicOn = !isMusicOn;
+
+        if (isMusicOn)
+        {
+            Debug.Log("?? Music Status: ON");
+        }
+        else
+        {
+            Debug.Log("?? Music Status: OFF");
+        }
+
+        // Change the picture based on the new true/false state
+        UpdateMusicButtonUI();
+    }
+
+    private void UpdateMusicButtonUI()
+    {
+        if (musicButtonImage == null || musicOnSprite == null || musicOffSprite == null) return;
+
+        // Swap the sprite depending on if music is on or off
+        if (isMusicOn)
+        {
+            musicButtonImage.sprite = musicOnSprite;
+        }
+        else
+        {
+            musicButtonImage.sprite = musicOffSprite;
+        }
+    }
+
+    // --- Keep the rest of your existing Panel, Play, and Exit code below here ---
     public void OpenPanel(GameObject newPanel)
     {
         if (newPanel == null) return;
-
-        // Hide the current active panel if there is one in history
-        if (panelHistory.Count > 0)
-        {
-            panelHistory.Peek().SetActive(false);
-        }
-
-        // Open the new panel and add it to our tracking history
+        if (panelHistory.Count > 0) panelHistory.Peek().SetActive(false);
         newPanel.SetActive(true);
         panelHistory.Push(newPanel);
     }
 
-    /// <summary>
-    /// Closes the current panel and returns to the previous location in history.
-    /// Attach this function to your "LeftButton" (Back Button).
-    /// </summary>
     public void GoBack()
     {
-        // We need at least 2 panels in history to go back (the current one and the previous one)
         if (panelHistory.Count > 1)
         {
-            // Remove the current panel from the stack and turn it off
             GameObject currentPanel = panelHistory.Pop();
             currentPanel.SetActive(false);
-
-            // Look at the panel right underneath it in history and turn it back on
             GameObject previousPanel = panelHistory.Peek();
             previousPanel.SetActive(true);
         }
-        else
-        {
-            Debug.LogWarning("No previous panels left in the navigation history!");
-        }
     }
 
-    /// <summary>
-    /// Call this function to start the actual game.
-    /// </summary>
-    public void PlayGame()
-    {
-        Debug.Log("Start Button Clicked! Loading your game scene...");
-        // Swap "GameScene" with the exact name of your playable level scene
-        // SceneManager.LoadScene("GameScene"); 
-    }
-
-    /// <summary>
-    /// Call this function to close the application.
-    /// </summary>
-    public void ExitGame()
-    {
-        Debug.Log("Exit Button Clicked! Closing application.");
-        Application.Quit();
-    }
+    public void PlayGame() => Debug.Log("Start Button Clicked!");
+    public void ExitGame() => Application.Quit();
 }
