@@ -191,7 +191,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2Buttons_0
+      name: StartButton
       rect:
         serializedVersion: 2
         x: 904
@@ -199,7 +199,7 @@ TextureImporter:
         width: 1333
         height: 564
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_1
+      name: ExitButton
       rect:
         serializedVersion: 2
         x: 2323
@@ -221,7 +221,7 @@ TextureImporter:
         width: 1250
         height: 539
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -235,7 +235,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_2
+      name: MenuButton
       rect:
         serializedVersion: 2
         x: 3754
@@ -243,7 +243,7 @@ TextureImporter:
         width: 314
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -265,7 +265,7 @@ TextureImporter:
         width: 317
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -287,7 +287,7 @@ TextureImporter:
         width: 312
         height: 323
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -301,7 +301,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_5
+      name: XButton
       rect:
         serializedVersion: 2
         x: 4898
@@ -309,7 +309,7 @@ TextureImporter:
         width: 311
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -331,7 +331,7 @@ TextureImporter:
         width: 964
         height: 363
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -353,7 +353,7 @@ TextureImporter:
         width: 942
         height: 329
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -367,7 +367,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_8
+      name: PlayButton
       rect:
         serializedVersion: 2
         x: 3754
@@ -375,7 +375,7 @@ TextureImporter:
         width: 314
         height: 324
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -389,7 +389,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_9
+      name: PauseButton
       rect:
         serializedVersion: 2
         x: 4132
@@ -397,7 +397,7 @@ TextureImporter:
         width: 317
         height: 329
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -411,7 +411,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_10
+      name: SettingsButton
       rect:
         serializedVersion: 2
         x: 4516
@@ -419,7 +419,7 @@ TextureImporter:
         width: 312
         height: 333
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -433,7 +433,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_11
+      name: HelpButton
       rect:
         serializedVersion: 2
         x: 4898
@@ -441,7 +441,7 @@ TextureImporter:
         width: 311
         height: 327
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -455,7 +455,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_12
+      name: LevelsButton
       rect:
         serializedVersion: 2
         x: 1207
@@ -463,7 +463,7 @@ TextureImporter:
         width: 852
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -485,7 +485,7 @@ TextureImporter:
         width: 346
         height: 348
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -499,7 +499,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_14
+      name: LoadButton
       rect:
         serializedVersion: 2
         x: 2776
@@ -507,7 +507,7 @@ TextureImporter:
         width: 811
         height: 261
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -521,7 +521,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_15
+      name: SaveButton
       rect:
         serializedVersion: 2
         x: 3754
@@ -529,7 +529,7 @@ TextureImporter:
         width: 314
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -543,7 +543,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_16
+      name: RestartButton
       rect:
         serializedVersion: 2
         x: 4135
@@ -551,7 +551,7 @@ TextureImporter:
         width: 314
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -565,7 +565,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_17
+      name: MusicONButton
       rect:
         serializedVersion: 2
         x: 4516
@@ -573,7 +573,7 @@ TextureImporter:
         width: 315
         height: 323
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -595,7 +595,7 @@ TextureImporter:
         width: 320
         height: 323
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -617,7 +617,7 @@ TextureImporter:
         width: 964
         height: 320
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -639,7 +639,7 @@ TextureImporter:
         width: 1432
         height: 496
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -661,7 +661,7 @@ TextureImporter:
         width: 299
         height: 308
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -683,7 +683,7 @@ TextureImporter:
         width: 964
         height: 361
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -705,7 +705,7 @@ TextureImporter:
         width: 301
         height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -727,7 +727,7 @@ TextureImporter:
         width: 299
         height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -741,7 +741,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_25
+      name: BackButton
       rect:
         serializedVersion: 2
         x: 4538
@@ -749,7 +749,7 @@ TextureImporter:
         width: 302
         height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -771,7 +771,7 @@ TextureImporter:
         width: 308
         height: 304
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -788,7 +788,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 686621d216106da4681fee47affe4151
     internalID: 0
     vertices: []
     indices: 
@@ -798,33 +798,33 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2Buttons_0: 227966557101677201
-      2Buttons_1: 2318859602290865910
-      2Buttons_10: -3033097761542620191
-      2Buttons_11: 3065841112808183986
-      2Buttons_12: -5311802939823023761
       2Buttons_13: 4116842141343291998
-      2Buttons_14: -3941976204058514578
-      2Buttons_15: 903180697615969625
-      2Buttons_16: 6470825833068494721
-      2Buttons_17: 2262996002639423641
       2Buttons_18: -3622595025386242670
       2Buttons_19: -8148285036249241460
-      2Buttons_2: 3858880950304793197
       2Buttons_20: -160593264718297214
       2Buttons_21: -6865936536901563618
       2Buttons_22: 8766200044922185797
       2Buttons_23: 6000602304650483095
       2Buttons_24: 406687222898042655
-      2Buttons_25: -1229036889853085582
       2Buttons_26: 2637498324482749304
       2Buttons_3: 8175803318789843822
       2Buttons_4: 4739840755553041099
-      2Buttons_5: -4895121349918385624
       2Buttons_6: -5383338071801645417
       2Buttons_7: 7921536611002472624
-      2Buttons_8: 4693240003116165031
-      2Buttons_9: -5128019466919862670
+      BackButton: -1229036889853085582
+      ExitButton: 2318859602290865910
+      HelpButton: 3065841112808183986
+      LevelsButton: -5311802939823023761
+      LoadButton: -3941976204058514578
+      MenuButton: 3858880950304793197
+      MusicONButton: 2262996002639423641
+      PauseButton: -5128019466919862670
+      PlayButton: 4693240003116165031
+      RestartButton: 6470825833068494721
+      SaveButton: 903180697615969625
+      SettingsButton: -3033097761542620191
+      StartButton: 227966557101677201
+      XButton: -4895121349918385624
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
