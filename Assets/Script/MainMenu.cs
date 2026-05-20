@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // CRUCIAL: Required to talk to the Image component!
+using System.Collections.Generic; // Required to use the Stacks history system
+using UnityEngine.SceneManagement; // Required for loading scenes
 
 public class MainMenu : MonoBehaviour
 {
@@ -72,6 +74,17 @@ public class MainMenu : MonoBehaviour
     {
         if (newPanel == null) return;
         if (panelHistory.Count > 0) panelHistory.Peek().SetActive(false);
+    }
+
+    public void OpenPanel(GameObject newPanel)
+    {
+        if (newPanel == null) return;
+
+        if (panelHistory.Count > 0)
+        {
+            panelHistory.Peek().SetActive(false);
+        }
+
         newPanel.SetActive(true);
         panelHistory.Push(newPanel);
     }
@@ -82,6 +95,7 @@ public class MainMenu : MonoBehaviour
         {
             GameObject currentPanel = panelHistory.Pop();
             currentPanel.SetActive(false);
+
             GameObject previousPanel = panelHistory.Peek();
             previousPanel.SetActive(true);
         }
@@ -89,4 +103,20 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame() => Debug.Log("Start Button Clicked!");
     public void ExitGame() => Application.Quit();
+    public void PlayGame()
+    {
+        Debug.Log("Start Button Clicked! Loading LEVEL1... Adventure awaits!");
+        SceneManager.LoadScene("LEVEL1");
+    }
+
+    public void ExitGame()
+    {
+        Debug.Log("Exit Button Clicked! Closing application.");
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; 
+#else
+        Application.Quit();
+#endif
+    }
 }
