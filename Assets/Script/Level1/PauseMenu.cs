@@ -30,6 +30,18 @@ public class PauseMenu : MonoBehaviour
     {
         if (isGameOver) return;
 
+        // 🛡️ KEY FIX: If LevelVictoryManager has declared the level won,
+        // ignore the Escape key entirely so the player cannot accidentally pause during the victory lap!
+        if (LevelVictoryManager.IsVictoryActive)
+        {
+            // If the game happened to be paused when the victory hit, unpause it safely
+            if (isPaused)
+            {
+                ResumeGame();
+            }
+            return;
+        }
+
         // Modern Unity 6 Input driver check for Escape Key
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
@@ -75,7 +87,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
-        // 🧽 FIXED: Instead of resetting to full health (-1), inject their exact level entrance health snapshot back into memory!
+        // Inject their exact level entrance health snapshot back into memory!
         PlayerHealth.SavedHealth = PlayerHealth.LevelStartHealth;
 
         Time.timeScale = 1f; // ALWAYS unfreeze time scaling before changing scenes!
@@ -95,13 +107,13 @@ public class PauseMenu : MonoBehaviour
 
     private void OnDestroy()
     {
-        // 🧼 Always clean up your wires to prevent background memory leaks
+        // Always clean up your wires to prevent background memory leaks
         PlayerHealth.OnPlayerDeath -= HandleGameOverState;
     }
 
     private void HandleGameOverState()
     {
-        // ✅ FIXED: Route the event signal directly into the existing robust panel system!
+        // Route the event signal directly into the existing robust panel system!
         TriggerGameOver();
     }
 }
