@@ -196,7 +196,7 @@ MonoBehaviour:
   moveSpeed: 5
   minWanderTime: 1.5
   maxWanderTime: 3.5
-  contactDamage: 2
+  contactDamage: 15
   damageCooldown: 1
   deathAnimDuration: 0.8
 --- !u!114 &6232120286799352462
