@@ -675,7 +675,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2Buttons_22
+      name: DONT_USE
       rect:
         serializedVersion: 2
         x: 95
@@ -803,7 +803,6 @@ TextureImporter:
       2Buttons_19: -8148285036249241460
       2Buttons_20: -160593264718297214
       2Buttons_21: -6865936536901563618
-      2Buttons_22: 8766200044922185797
       2Buttons_23: 6000602304650483095
       2Buttons_24: 406687222898042655
       2Buttons_26: 2637498324482749304
@@ -812,6 +811,7 @@ TextureImporter:
       2Buttons_6: -5383338071801645417
       2Buttons_7: 7921536611002472624
       BackButton: -1229036889853085582
+      DONT_USE: 8766200044922185797
       ExitButton: 2318859602290865910
       HelpButton: 3065841112808183986
       LevelsButton: -5311802939823023761
