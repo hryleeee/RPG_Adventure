@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Start()
     {
+        PlayerHealth.OnPlayerDeath += HandleGameOverState;
         // Force clean state on scene boot
         isPaused = false;
         isGameOver = false;
@@ -74,9 +75,12 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartGame()
     {
+        // 🧽 FIXED: Instead of resetting to full health (-1), inject their exact level entrance health snapshot back into memory!
+        PlayerHealth.SavedHealth = PlayerHealth.LevelStartHealth;
+
         Time.timeScale = 1f; // ALWAYS unfreeze time scaling before changing scenes!
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log("🔄 Reloading current level scene.");
+        Debug.Log($"🔄 Reloading scene. Resetting player health back to checkpoint entry value: {PlayerHealth.LevelStartHealth}");
     }
 
     public void ExitToMenu()
@@ -87,5 +91,17 @@ public class PauseMenu : MonoBehaviour
         // Exact name matching your Scenes folder configuration down to the case
         SceneManager.LoadScene("GameMenu");
         Debug.Log("🚀 SceneManager load execution fired for 'GameMenu'.");
+    }
+
+    private void OnDestroy()
+    {
+        // 🧼 Always clean up your wires to prevent background memory leaks
+        PlayerHealth.OnPlayerDeath -= HandleGameOverState;
+    }
+
+    private void HandleGameOverState()
+    {
+        // ✅ FIXED: Route the event signal directly into the existing robust panel system!
+        TriggerGameOver();
     }
 }
