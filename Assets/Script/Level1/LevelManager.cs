@@ -1,89 +1,112 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
+using TMPro; // CRITICAL: Gives us access to TextMesh Pro UI elements
 
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
-    [Header("Enemy Tracking Tag")]
-    [SerializeField] private string enemyTag = "Enemy";
+    [Header("UI Feedback Elements")]
+    [Tooltip("Drag a TextMeshProUGUI component from your Canvas here to display progression updates.")]
+    public TextMeshProUGUI completionText;
 
-    private int currentEnemyCount;
+    [Header("Transition Layout Parameters")]
+    [Tooltip("How long to display the complete banner before transitioning scenes.")]
+    public float levelTransitionDelay = 3.0f;
+
+    private int totalEnemies;
+    private int deadEnemiesCount;
+    private bool isLevelTransitioning = false;
 
     private void Awake()
     {
-        // Typo corrected: Changed 'nth' to 'this' so the Singleton establishes perfectly
-        if (Instance != null && Instance != this)
+        // Secure the Singleton connection
+        if (Instance == null)
         {
-            Destroy(gameObject);
+            Instance = this;
         }
         else
         {
-            Instance = this;
+            Destroy(gameObject);
+            return;
+        }
+
+        // Keep the text completely hidden on level startup
+        if (completionText != null)
+        {
+            completionText.gameObject.SetActive(false);
         }
     }
 
     private void Start()
     {
-        // Dynamically find and count every monster manually placed or spawned at start
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        currentEnemyCount = enemies.Length;
-        Debug.Log($"👾 Level initialized. Monsters remaining to clear: {currentEnemyCount}");
+        // Scan the entire battlefield for enemies right on launch
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        totalEnemies = enemies.Length;
+        deadEnemiesCount = 0;
+        isLevelTransitioning = false;
 
-        // Safeguard check in case a room starts out empty
-        CheckProgression();
+        Debug.Log($"[LevelManager] Active zone scanned. Total enemies registered: {totalEnemies}");
     }
 
-    /// <summary>
-    /// Called globally by any enemy script right as they execute their death logic.
-    /// </summary>
+    // Called automatically by Demon1Controller or Demon2Controller when they hit 0 HP
     public void RegisterEnemyDeath()
     {
-        currentEnemyCount--;
-        Debug.Log($"⚔️ A monster was slain! Monsters remaining: {currentEnemyCount}");
+        if (isLevelTransitioning) return;
 
-        CheckProgression();
-    }
+        deadEnemiesCount++;
+        Debug.Log($"[LevelManager] Enemy slain. Current counter: {deadEnemiesCount}/{totalEnemies}");
 
-    private void CheckProgression()
-    {
-        if (currentEnemyCount <= 0)
+        if (deadEnemiesCount >= totalEnemies)
         {
-            LoadNextCustomLevel();
+            StartCoroutine(SequenceChronologicalTransition());
         }
     }
 
-    private void LoadNextCustomLevel()
+    private IEnumerator SequenceChronologicalTransition()
     {
-        string currentScene = SceneManager.GetActiveScene().name;
-        string nextScene = "GameMenu"; // Default fallback
+        isLevelTransitioning = true;
 
-        // Exact uppercase mapping matching your repository structure
-        switch (currentScene)
+        // Fetch the name of your active map asset
+        string currentLevelName = SceneManager.GetActiveScene().name;
+
+        // Display the requested custom feedback message on-screen
+        if (completionText != null)
         {
-            case "LEVEL1":
-                nextScene = "LEVEL3"; // Skips LEVEL2
-                break;
-            case "LEVEL3":
-                nextScene = "LEVEL4";
-                break;
-            case "LEVEL4":
-                nextScene = "LEVEL9"; // Skips 5, 6, 7, 8
-                break;
-            case "LEVEL9":
-                nextScene = "LEVEL10";
-                break;
-            case "LEVEL10":
-                nextScene = "GameMenu"; // Victory loop back
-                break;
-            default:
-                nextScene = "GameMenu";
-                break;
+            completionText.text = $"{currentLevelName} CLEARED!";
+            completionText.gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning($"[LevelManager] {currentLevelName} done! (Completion UI slot missing in Inspector)");
         }
 
-        Debug.Log($"🏆 All monsters cleared! Transitioning from {currentScene} to {nextScene}...");
+        // FREEZE physics/time if desired, or let the player run around during the brief buffer window
+        Debug.Log($"[LevelManager] Level finished! Delaying transition for {levelTransitionDelay} seconds...");
 
-        Time.timeScale = 1f; // Keep time moving smoothly
-        SceneManager.LoadScene(nextScene);
+        // Wait for your customized duration clock to tick down
+        yield return new WaitForSeconds(levelTransitionDelay);
+
+        // Calculate the next chronological scene in your Build Settings profile sequence
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        // Safety verification check: Make sure there's another scene left in the build tree
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            // Ultimate endgame state hit (LEVEL10 cleared!)
+            Debug.Log("[LevelManager] Absolute victory achieved! All levels completely cleared.");
+            if (completionText != null)
+            {
+                completionText.text = "VICTORY! ALL THREATS PURGED!";
+            }
+
+            yield return new WaitForSeconds(3.0f);
+            SceneManager.LoadScene("GameMenu"); // Return to title screen
+        }
     }
 }
