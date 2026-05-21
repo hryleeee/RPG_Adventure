@@ -109,7 +109,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("Start Button Clicked! Loading LEVEL1... Adventure awaits!");
-        SceneManager.LoadScene("LEVEL1");
+        SceneManager.LoadScene("LEVEL 1");
     }
 
     public void ExitGame()
