@@ -96,11 +96,20 @@ public class PlayerController : MonoBehaviour
             // Skip self
             if (hit.gameObject == gameObject) continue;
 
-            Demon1Controller demon = hit.GetComponent<Demon1Controller>();
-            if (demon != null)
+            // Kill Demon1
+            Demon1Controller demon1 = hit.GetComponent<Demon1Controller>();
+            if (demon1 != null)
             {
-                Debug.Log($"[PlayerController] Attack hit: {demon.gameObject.name}");
-                demon.Die();
+                Debug.Log($"[PlayerController] Attack hit: {demon1.gameObject.name}");
+                demon1.Die();
+            }
+
+            // Kill Demon2
+            Demon2Controller demon2 = hit.GetComponent<Demon2Controller>();
+            if (demon2 != null)
+            {
+                Debug.Log($"[PlayerController] Attack hit: {demon2.gameObject.name}");
+                demon2.Die();
             }
         }
 
