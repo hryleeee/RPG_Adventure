@@ -67653,6 +67653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vampire1_0
       objectReference: {fileID: 0}
+    - target: {fileID: 6382102665241412113, guid: 7d5d0c48db17a644dbf69332dc1c41dc, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
