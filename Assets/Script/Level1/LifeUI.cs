@@ -74,18 +74,18 @@ public class LifeUI : MonoBehaviour
             return;
         }
 
-        // Subscribe to health change events
-        player.OnHealthChanged += UpdateHearts;
+        // ✅ FIXED: Changed 'player.OnHealthChanged' to 'PlayerHealth.OnHealthChanged'
+        PlayerHealth.OnHealthChanged += UpdateHearts;
 
-        // Draw the initial state (full health)
+        // Draw the initial state
         UpdateHearts(player.CurrentHealth);
     }
 
     private void OnDestroy()
     {
-        // Always unsubscribe to avoid memory leaks
-        if (player != null)
-            player.OnHealthChanged -= UpdateHearts;
+        // ✅ FIXED: Changed to 'PlayerHealth.OnHealthChanged' and removed the instance null check
+        // (Since the event is static, you can safely unsubscribe directly!)
+        PlayerHealth.OnHealthChanged -= UpdateHearts;
     }
 
     /// <summary>

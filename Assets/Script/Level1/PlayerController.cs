@@ -4,21 +4,12 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// Controls player movement, animation, facing direction, and attack hit detection.
-/// Attack damage is applied via Physics2D.OverlapCircleAll at the moment of swing —
-/// no child hitbox object needed.
-///
-/// Required components on the Player GameObject:
-///   - Rigidbody2D       (Gravity Scale = 0, Freeze Rotation Z)
-///   - Animator          (with 'player' controller assigned)
-///   - SpriteRenderer
-///   - BoxCollider2D or CapsuleCollider2D
-///   - PlayerInput       (Actions = InputSystem_Actions, Behavior = Send Messages)
+/// Attack damage is applied via Physics2D.OverlapCircleAll at the moment of swing.
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed      = 5f;
-    public float sprintMultiplier = 1.8f;
+    public float moveSpeed = 5f; // This is now your permanent max speed!
 
     [Header("Attack Settings")]
     [Tooltip("Radius of the attack hit circle around the player")]
@@ -28,72 +19,59 @@ public class PlayerController : MonoBehaviour
     public float attackDuration = 0.5f;
 
     // Component references
-    private Rigidbody2D    rb;
-    private Animator       animator;
+    private Rigidbody2D rb;
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private PlayerHealth   playerHealth;
+    private PlayerHealth playerHealth;
 
     // Input state
     private Vector2 moveInput;
-    private bool    isSprinting;
-    private bool    isAttacking;
-    private bool    isGuarding;
+    private bool isAttacking;
+    private bool isGuarding;
 
     // Animator parameter hashes
-    private static readonly int AnimIsMoving    = Animator.StringToHash("isMoving");
+    private static readonly int AnimIsMoving = Animator.StringToHash("isMoving");
     private static readonly int AnimIsAttacking = Animator.StringToHash("isAttacking");
-    private static readonly int AnimIsGuarding  = Animator.StringToHash("isGuarding");
-    private static readonly int AnimMoveX       = Animator.StringToHash("moveX");
-    private static readonly int AnimMoveY       = Animator.StringToHash("moveY");
+    private static readonly int AnimIsGuarding = Animator.StringToHash("isGuarding");
+    private static readonly int AnimMoveX = Animator.StringToHash("moveX");
+    private static readonly int AnimMoveY = Animator.StringToHash("moveY");
 
     private void Awake()
     {
-        rb             = GetComponent<Rigidbody2D>();
-        animator       = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        playerHealth   = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<PlayerHealth>();
 
-        if (rb == null)           Debug.LogWarning("[PlayerController] Rigidbody2D missing.");
-        if (animator == null)     Debug.LogWarning("[PlayerController] Animator missing.");
+        if (rb == null) Debug.LogWarning("[PlayerController] Rigidbody2D missing.");
+        if (animator == null) Debug.LogWarning("[PlayerController] Animator missing.");
         if (playerHealth == null) Debug.LogWarning("[PlayerController] PlayerHealth missing.");
     }
 
     // ── Input callbacks (New Input System — Send Messages) ────────────────
 
-    private void OnMove(InputValue value)   { moveInput  = value.Get<Vector2>(); }
-    private void OnSprint(InputValue value) { isSprinting = value.isPressed; }
+    private void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
+
+    // ✅ FIXED: Completely deleted 'OnSprint' listener function from this block!
 
     private void OnAttack(InputValue value)
     {
-        if (value.isPressed && !isAttacking)
+        if (value.isPressed && !isAttacking && !isGuarding) // Cannot attack while actively holding a block
         {
             isAttacking = true;
-            isGuarding  = false;
             StartCoroutine(DoAttack());
         }
     }
 
-    private void OnCrouch(InputValue value)
-    {
-        if (value.isPressed)
-        {
-            isGuarding = !isGuarding;
-            if (isGuarding) isAttacking = false;
-        }
-    }
-
-    // ── Attack coroutine — hits demons at the moment of swing ─────────────
+    // ── Attack coroutine ──────────────────────────────────────────────────
 
     private IEnumerator DoAttack()
     {
-        // Small delay so the animation has started before we scan for hits
         yield return new WaitForSeconds(0.1f);
 
-        // Scan all colliders within attackRadius around the player
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius);
         foreach (Collider2D hit in hits)
         {
-            // Skip self
             if (hit.gameObject == gameObject) continue;
 
             // Kill Demon1
@@ -113,7 +91,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Wait out the rest of the attack animation
         yield return new WaitForSeconds(attackDuration - 0.1f);
         isAttacking = false;
     }
@@ -124,8 +101,10 @@ public class PlayerController : MonoBehaviour
     {
         if (rb == null) return;
 
-        float speed = isSprinting ? moveSpeed * sprintMultiplier : moveSpeed;
-        if (isGuarding) speed *= 0.4f;
+        // ✅ FIXED: Removed 'isSprinting' calculation parameter check completely
+        float speed = moveSpeed;
+
+        if (isGuarding) speed *= 0.4f; // Slow movement down while holding up the guard
 
         Vector2 velocity = moveInput.sqrMagnitude > 1f
             ? moveInput.normalized * speed
@@ -138,6 +117,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        HandleBlockingInput(); // Process block hold check first
         UpdateAnimator();
         UpdateFacing();
 
@@ -146,15 +126,29 @@ public class PlayerController : MonoBehaviour
             playerHealth.SetGuarding(isGuarding);
     }
 
+    private void HandleBlockingInput()
+    {
+        if (Keyboard.current != null)
+        {
+            isGuarding = Keyboard.current.cKey.isPressed;
+
+            if (isGuarding)
+            {
+                isAttacking = false; // Instantly interrupt any attacks if they snap to defensive position
+            }
+        }
+    }
+
     private void UpdateAnimator()
     {
         if (animator == null) return;
 
+        // Player is moving only if input is registered and they aren't hunkered down blocking
         bool isMoving = moveInput.sqrMagnitude > 0.01f && !isGuarding;
 
-        animator.SetBool(AnimIsMoving,    isMoving);
+        animator.SetBool(AnimIsMoving, isMoving);
         animator.SetBool(AnimIsAttacking, isAttacking);
-        animator.SetBool(AnimIsGuarding,  isGuarding);
+        animator.SetBool(AnimIsGuarding, isGuarding);
 
         if (isMoving)
         {
@@ -167,11 +161,10 @@ public class PlayerController : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        if (moveInput.x > 0.01f)       spriteRenderer.flipX = false;
+        if (moveInput.x > 0.01f) spriteRenderer.flipX = false;
         else if (moveInput.x < -0.01f) spriteRenderer.flipX = true;
     }
 
-    // ── Gizmo — visualise attack radius in Scene view ────────────────────
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

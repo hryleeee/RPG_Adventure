@@ -1,87 +1,106 @@
 using UnityEngine;
-using System; // Required for Action/Events
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("Health Settings")]
-    [SerializeField] private int maxHealth = 5;
+    // 💾 Cross-scene memory tracking
+    public static int SavedHealth = -1;
+
+    // 📸 NEW CHECKPOINT LAYER: Remembers exactly what health you entered the current level with!
+    public static int LevelStartHealth = -1;
+
+    [Header("Health Core Parameters")]
+    public int maxHealth = 5;
+
     private int currentHealth;
-
-    [Header("Invincibility Configuration")]
-    [SerializeField] private float invincibilityDuration = 0.5f;
-    private float invincibilityTimer;
-
-    [Header("UI Manager Link")]
-    [Tooltip("Drag your scene's PauseManager object here to trigger the Game Over screen")]
-    public PauseMenu pauseMenuManager; // Fixed type naming convention to match your script explicitly
-
-    // Team Hooks required by LifeUI.cs and PlayerController.cs
-    public event Action<int> OnHealthChanged;
-    private bool isGuarding;
-
-    // Public property to expose current health safely to LifeUI.cs
-    public int CurrentHealth => currentHealth;
-
-    private void Start()
+    public int CurrentHealth
     {
-        currentHealth = maxHealth;
-        // Broadcast initial health state to UI on start
-        OnHealthChanged?.Invoke(currentHealth);
-    }
-
-    private void Update()
-    {
-        if (invincibilityTimer > 0)
+        get => currentHealth;
+        private set
         {
-            invincibilityTimer -= Time.deltaTime;
+            currentHealth = value;
+            SavedHealth = currentHealth; // Keep the cross-scene save perfectly in sync!
+            OnHealthChanged?.Invoke(currentHealth);
         }
     }
 
-    /// <summary>
-    /// Call this function when an enemy hit registers on the player.
-    /// </summary>
-    public void TakeDamage(int damageAmount)
+    // 🔌 Global System Event Wires
+    public static event Action<int> OnHealthChanged;
+    public static event Action OnPlayerDeath; // 💀 Broadcasts globally when HP hits 0
+
+    [Header("Combat Mechanics")]
+    public float invincibilityDuration = 1f;
+    public bool isGuarding { get; private set; }
+
+    private void Awake()
     {
-        // If player is guarding or invincible, block the damage
-        if (isGuarding || invincibilityTimer > 0)
+        // 1. Establish current health from cross-scene memory
+        if (SavedHealth > 0)
         {
-            Debug.Log("Hit blocked or player is invincible!");
-            return;
-        }
-
-        currentHealth -= damageAmount;
-        invincibilityTimer = invincibilityDuration; // Trigger i-frames
-
-        Debug.Log($"Player hit! Current Health: {currentHealth}");
-
-        // Safely tell LifeUI.cs to update your heart visuals
-        OnHealthChanged?.Invoke(currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            ExecuteGameOver();
-        }
-    }
-
-    /// <summary>
-    /// Called by PlayerController.cs to toggle shield blocking states
-    /// </summary>
-    public void SetGuarding(bool guardingState)
-    {
-        isGuarding = guardingState;
-    }
-
-    private void ExecuteGameOver()
-    {
-        Debug.Log("💀 Player health reached zero! Triggering Game Over panel.");
-
-        if (pauseMenuManager != null)
-        {
-            pauseMenuManager.TriggerGameOver();
+            currentHealth = SavedHealth;
         }
         else
         {
-            Debug.LogError("The PauseMenuManager reference is missing on the Player GameObject!");
+            currentHealth = maxHealth;
+            SavedHealth = maxHealth;
         }
+
+        // 2. Take a snapshot of our entrance health right as this specific level boots up!
+        LevelStartHealth = currentHealth;
+        Debug.Log($"[PlayerHealth] Scene Checkpoint Captured! Entering level with: {LevelStartHealth} HP.");
+    }
+
+    private void Start()
+    {
+        // Immediate UI heart render pass right on map load
+        OnHealthChanged?.Invoke(CurrentHealth);
+    }
+
+    public void SetGuarding(bool guarding)
+    {
+        isGuarding = guarding;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (isGuarding)
+        {
+            Debug.Log("[PlayerHealth] Attack mitigated by active guard!");
+            return;
+        }
+
+        // Clamp health processing so it never drops below absolute zero
+        CurrentHealth = Mathf.Max(0, CurrentHealth - damage);
+        Debug.Log($"[PlayerHealth] Hurt processed. HP remaining: {CurrentHealth}/{maxHealth}");
+
+        if (CurrentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    /// <summary>
+    /// Safely restores a set amount of hearts, clamping tightly to max capacity.
+    /// </summary>
+    public void Heal(int healAmount)
+    {
+        // Safety verification: Don't heal if the player is already dead
+        if (CurrentHealth <= 0) return;
+
+        // Increment health and use Mathf.Min to ensure we never blast past maxHealth limit!
+        CurrentHealth = Mathf.Min(maxHealth, CurrentHealth + healAmount);
+
+        Debug.Log($"[PlayerHealth] Heart pickup processed! Current HP: {CurrentHealth}/{maxHealth}");
+    }
+
+    private void Die()
+    {
+        Debug.Log("[PlayerHealth] Character flatlined. Triggering Game Over loop.");
+
+        // Clear active tracking memory
+        SavedHealth = -1;
+
+        // 🚀 FIRE THE FLARE: Alert the PauseMenu UI manager to turn on the Game Over screen!
+        OnPlayerDeath?.Invoke();
     }
 }
