@@ -39731,6 +39731,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 505642405}
     m_Modifications:
+    - target: {fileID: 1049071506916810942, guid: 474f60aeeca88154fac97546dc759d3d, type: 3}
+      propertyPath: damageCooldown
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1051544373395111965, guid: 474f60aeeca88154fac97546dc759d3d, type: 3}
       propertyPath: m_Name
       value: hell-beast-burn1_0

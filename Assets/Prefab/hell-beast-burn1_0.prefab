@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5112d8b2040094747b4bd2eeec4e6773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demon1Controller
-  moveSpeed: 0
+  moveSpeed: 10
   minWanderTime: 1.5
   maxWanderTime: 3.5
   contactDamage: 2
