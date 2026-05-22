@@ -147,7 +147,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -156,9 +156,9 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 3
+  m_SleepingMode: 2
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &1049071506916810942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5112d8b2040094747b4bd2eeec4e6773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demon1Controller
-  moveSpeed: 10
+  moveSpeed: 5
   minWanderTime: 1.5
   maxWanderTime: 3.5
   contactDamage: 2
