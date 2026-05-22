@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Settings")]
-    public float moveSpeed = 5f; // This is now your permanent max speed!
+    public float moveSpeed = 5f;
 
     [Header("Attack Settings")]
     [Tooltip("Radius of the attack hit circle around the player")]
@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Duration the attack window stays open (should match animation length)")]
     public float attackDuration = 0.5f;
+
+    [Header("Knockback Settings")]
+    [Tooltip("The speed force applied to shove enemies backwards.")]
+    public float knockbackForce = 12f;
+    [Tooltip("How long enemies stay physically paralyzed before recovering AI control.")]
+    public float knockbackDuration = 0.2f;
 
     // Component references
     private Rigidbody2D rb;
@@ -48,15 +54,11 @@ public class PlayerController : MonoBehaviour
         if (playerHealth == null) Debug.LogWarning("[PlayerController] PlayerHealth missing.");
     }
 
-    // ── Input callbacks (New Input System — Send Messages) ────────────────
-
     private void OnMove(InputValue value) { moveInput = value.Get<Vector2>(); }
-
-    // ✅ FIXED: Completely deleted 'OnSprint' listener function from this block!
 
     private void OnAttack(InputValue value)
     {
-        if (value.isPressed && !isAttacking && !isGuarding) // Cannot attack while actively holding a block
+        if (value.isPressed && !isAttacking && !isGuarding)
         {
             isAttacking = true;
             StartCoroutine(DoAttack());
@@ -64,30 +66,40 @@ public class PlayerController : MonoBehaviour
     }
 
     // ── Attack coroutine ──────────────────────────────────────────────────
-
     private IEnumerator DoAttack()
     {
         yield return new WaitForSeconds(0.1f);
 
+        // Sweeps the red wire sphere zone for colliders
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRadius);
         foreach (Collider2D hit in hits)
         {
             if (hit.gameObject == gameObject) continue;
+            if (!hit.CompareTag("Enemy")) continue; // Safety validation line
 
-            // Kill Demon1
-            Demon1Controller demon1 = hit.GetComponent<Demon1Controller>();
-            if (demon1 != null)
+            GameObject enemyTarget = hit.gameObject;
+
+            // 💥 1. APPLY PHYSICAL KNOCKBACK
+            EnemyKnockback knockback = enemyTarget.GetComponent<EnemyKnockback>();
+            if (knockback != null)
             {
-                Debug.Log($"[PlayerController] Attack hit: {demon1.gameObject.name}");
-                demon1.Die();
+                knockback.ApplyKnockback(transform.position, knockbackForce, knockbackDuration);
             }
 
-            // Kill Demon2
-            Demon2Controller demon2 = hit.GetComponent<Demon2Controller>();
-            if (demon2 != null)
+            // 💀 2. DAMAGE THE UNIVERSAL HEALTH SYSTEM
+            EnemyHealth enemyHealth = enemyTarget.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
             {
-                Debug.Log($"[PlayerController] Attack hit: {demon2.gameObject.name}");
-                demon2.Die();
+                enemyHealth.TakeDamage(1); // Deals 1 point of weapon damage
+            }
+            else
+            {
+                // 🛡️ LEGACY FALLBACK: Automatically handles unconfigured map prefabs
+                Demon1Controller demon1 = enemyTarget.GetComponent<Demon1Controller>();
+                if (demon1 != null) demon1.Die();
+
+                Demon2Controller demon2 = enemyTarget.GetComponent<Demon2Controller>();
+                if (demon2 != null) demon2.Die();
             }
         }
 
@@ -95,16 +107,12 @@ public class PlayerController : MonoBehaviour
         isAttacking = false;
     }
 
-    // ── Physics ───────────────────────────────────────────────────────────
-
     private void FixedUpdate()
     {
         if (rb == null) return;
 
-        // ✅ FIXED: Removed 'isSprinting' calculation parameter check completely
         float speed = moveSpeed;
-
-        if (isGuarding) speed *= 0.4f; // Slow movement down while holding up the guard
+        if (isGuarding) speed *= 0.4f;
 
         Vector2 velocity = moveInput.sqrMagnitude > 1f
             ? moveInput.normalized * speed
@@ -113,15 +121,12 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = velocity;
     }
 
-    // ── Animation & facing ────────────────────────────────────────────────
-
     private void Update()
     {
-        HandleBlockingInput(); // Process block hold check first
+        HandleBlockingInput();
         UpdateAnimator();
         UpdateFacing();
 
-        // Keep PlayerHealth in sync with guard state every frame
         if (playerHealth != null)
             playerHealth.SetGuarding(isGuarding);
     }
@@ -131,11 +136,7 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current != null)
         {
             isGuarding = Keyboard.current.cKey.isPressed;
-
-            if (isGuarding)
-            {
-                isAttacking = false; // Instantly interrupt any attacks if they snap to defensive position
-            }
+            if (isGuarding) isAttacking = false;
         }
     }
 
@@ -143,7 +144,6 @@ public class PlayerController : MonoBehaviour
     {
         if (animator == null) return;
 
-        // Player is moving only if input is registered and they aren't hunkered down blocking
         bool isMoving = moveInput.sqrMagnitude > 0.01f && !isGuarding;
 
         animator.SetBool(AnimIsMoving, isMoving);

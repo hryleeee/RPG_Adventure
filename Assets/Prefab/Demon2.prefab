@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8811526998968698994}
   - component: {fileID: 3273443877869970476}
   - component: {fileID: 3513124937079432822}
+  - component: {fileID: 5732934304939175147}
   m_Layer: 0
   m_Name: Demon2
   m_TagString: Enemy
@@ -206,9 +207,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7163a5d4bd892749976a7026c5296b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demon2Controller
-  moveSpeed: 2.5
+  moveSpeed: 4
   minWanderTime: 1.2
   maxWanderTime: 3
   contactDamage: 1
   damageCooldown: 1
   deathAnimDuration: 0.8
+--- !u!114 &5732934304939175147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1989796747882999555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107f0ebdef696345ba972abe28a372f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2

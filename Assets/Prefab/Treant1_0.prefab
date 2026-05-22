@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 813682390445723946}
   - component: {fileID: 3008630144721631807}
   - component: {fileID: 4720645627391400052}
+  - component: {fileID: 8061781563611186875}
   m_Layer: 0
   m_Name: Treant1_0
   m_TagString: Enemy
@@ -173,7 +174,7 @@ MonoBehaviour:
   moveSpeed: 5
   minWanderTime: 1.2
   maxWanderTime: 3
-  contactDamage: 5
+  contactDamage: 2
   damageCooldown: 1
   deathAnimDuration: 0.8
 --- !u!58 &4720645627391400052
@@ -212,3 +213,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.41999996
+--- !u!114 &8061781563611186875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6965258660781903954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107f0ebdef696345ba972abe28a372f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 3

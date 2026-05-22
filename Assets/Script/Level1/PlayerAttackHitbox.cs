@@ -12,13 +12,17 @@ public class PlayerAttackHitbox : MonoBehaviour
     private Animator playerAnimator;
     private Collider2D hitboxCollider;
 
+    [Header("Combat Settings")]
+    [Tooltip("How much health/lives to remove from the enemy on a successful hit.")]
+    public int attackDamage = 1;
+
     [Header("Knockback Settings")]
     [Tooltip("The speed force applied to shove the enemy backwards.")]
     public float knockbackForce = 12f;
     [Tooltip("How long the enemy stays physically paralyzed before recovering AI control.")]
     public float knockbackDuration = 0.2f;
 
-    // ✅ FIXED: Swapped 'Demon1Controller' for 'GameObject' to track ALL enemy types per swing automatically!
+    // Tracks all enemy gameobjects hit inside the current swing frame window
     private readonly HashSet<GameObject> hitThisSwing = new HashSet<GameObject>();
 
     // Were we attacking last frame? Used to detect the START of a new swing
@@ -58,14 +62,11 @@ public class PlayerAttackHitbox : MonoBehaviour
         wasAttackingLastFrame = isAttackingNow;
     }
 
-    // Fires when the hitbox first overlaps something
     private void OnTriggerEnter2D(Collider2D other)
     {
         TryHit(other);
     }
 
-    // Fires every frame while overlapping — catches demons that were already
-    // inside the hitbox when the attack started
     private void OnTriggerStay2D(Collider2D other)
     {
         TryHit(other);
@@ -91,25 +92,33 @@ public class PlayerAttackHitbox : MonoBehaviour
         EnemyKnockback knockbackPhysics = enemyTarget.GetComponent<EnemyKnockback>();
         if (knockbackPhysics != null)
         {
-            // Track the source of the attack from the main player center coordinate point
             Vector2 attackSourcePosition = transform.parent != null ? (Vector2)transform.parent.position : (Vector2)transform.position;
-
             knockbackPhysics.ApplyKnockback(attackSourcePosition, knockbackForce, knockbackDuration);
         }
 
-        // 💀 2. TRIGGER LIFE THREAT REDUCTION/DEATH STATES FOR BOTH VARIANTS
-        // Demon 1 Handler Check
-        Demon1Controller demon1 = enemyTarget.GetComponent<Demon1Controller>();
-        if (demon1 != null)
-        {
-            demon1.Die();
-        }
+        // 💀 2. UNIVERSAL HEALTH REDUCTION STATE CONTROL
+        EnemyHealth enemyHealth = enemyTarget.GetComponent<EnemyHealth>();
 
-        // Demon 2 Handler Check (Now natively handled and protected!)
-        Demon2Controller demon2 = enemyTarget.GetComponent<Demon2Controller>();
-        if (demon2 != null)
+        if (enemyHealth != null)
         {
-            demon2.Die();
+            // ✅ SUCCESS: Deal standard damage to their unique inspector health pool!
+            enemyHealth.TakeDamage(attackDamage);
+        }
+        else
+        {
+            // 🛡️ LEGACY FALLBACK: If you haven't dragged EnemyHealth onto a prefab yet, 
+            // trigger their legacy code so the game continues to work seamlessly!
+            Demon1Controller demon1 = enemyTarget.GetComponent<Demon1Controller>();
+            if (demon1 != null)
+            {
+                demon1.Die();
+            }
+
+            Demon2Controller demon2 = enemyTarget.GetComponent<Demon2Controller>();
+            if (demon2 != null)
+            {
+                demon2.Die();
+            }
         }
     }
 }

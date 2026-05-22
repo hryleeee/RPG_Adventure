@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8108767755696982184}
   - component: {fileID: 4256035781427013534}
   - component: {fileID: 6232120286799352462}
+  - component: {fileID: 3755197843169729254}
   m_Layer: 0
   m_Name: Demon3
   m_TagString: Enemy
@@ -193,10 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5112d8b2040094747b4bd2eeec4e6773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Demon1Controller
-  moveSpeed: 5
+  moveSpeed: 3
   minWanderTime: 1.5
   maxWanderTime: 3.5
-  contactDamage: 15
+  contactDamage: 1
   damageCooldown: 1
   deathAnimDuration: 0.8
 --- !u!114 &6232120286799352462
@@ -212,3 +213,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyKnockback
   linearDragOverride: 5
+--- !u!114 &3755197843169729254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5004617253763967981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107f0ebdef696345ba972abe28a372f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 2
