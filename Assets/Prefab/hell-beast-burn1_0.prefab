@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3065795853936240709}
   - component: {fileID: 1049071506916810942}
   - component: {fileID: 4941654813184142857}
+  - component: {fileID: 1942382014163374528}
   m_Layer: 0
   m_Name: hell-beast-burn1_0
   m_TagString: Enemy
@@ -173,7 +174,7 @@ MonoBehaviour:
   moveSpeed: 0
   minWanderTime: 1.5
   maxWanderTime: 3.5
-  contactDamage: 3
+  contactDamage: 2
   damageCooldown: 1
   deathAnimDuration: 0.8
 --- !u!58 &4941654813184142857
@@ -212,3 +213,16 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.25
+--- !u!114 &1942382014163374528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051544373395111965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c107f0ebdef696345ba972abe28a372f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  maxHealth: 15
