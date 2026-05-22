@@ -4,9 +4,19 @@ using UnityEngine.InputSystem; // Speaks natively to Unity 6 Input Package drive
 
 public class PauseMenu : MonoBehaviour
 {
-    [Header("UI Panels Container Layout")]
+    [Header("UI HUD Interaction Buttons (Gameplay Screen Only)")]
+    [Tooltip("Drag the Pause Button that sits on your live active gameplay HUD here. Leave empty if none.")]
+    [SerializeField] private GameObject hudPauseButton;
+
+    [Tooltip("Drag the Settings Button that sits on your live active gameplay HUD here. Leave empty if you ONLY open settings from inside panels.")]
+    [SerializeField] private GameObject hudSettingsButton;
+
+    [Header("UI Window Panels Container Layout")]
     [Tooltip("Drag your Canvas PauseMenuPanel here")]
     [SerializeField] private GameObject pauseMenuPanel;
+
+    [Tooltip("Drag your Canvas SettingsPanel here")]
+    [SerializeField] private GameObject settingsPanel;
 
     [Tooltip("Drag your Canvas GameOverPanel here")]
     [SerializeField] private GameObject gameOverPanel;
@@ -14,106 +24,186 @@ public class PauseMenu : MonoBehaviour
     private bool isPaused;
     private bool isGameOver;
 
+    // Tracks which master sub-panel opened the settings screen
+    private GameObject sourcePanelBeforeSettings;
+
     private void Start()
     {
         PlayerHealth.OnPlayerDeath += HandleGameOverState;
-        // Force clean state on scene boot
+
         isPaused = false;
         isGameOver = false;
         Time.timeScale = 1f;
 
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
+
+        // Ensure only main live gameplay HUD triggers are visible on level boot
+        if (hudPauseButton != null) hudPauseButton.SetActive(true);
+        if (hudSettingsButton != null) hudSettingsButton.SetActive(true);
     }
 
     private void Update()
     {
-        if (isGameOver) return;
-
-        // 🛡️ KEY FIX: If LevelVictoryManager has declared the level won,
-        // ignore the Escape key entirely so the player cannot accidentally pause during the victory lap!
         if (LevelVictoryManager.IsVictoryActive)
         {
-            // If the game happened to be paused when the victory hit, unpause it safely
-            if (isPaused)
-            {
-                ResumeGame();
-            }
+            if (isPaused) ResumeGame();
             return;
         }
 
-        // Modern Unity 6 Input driver check for Escape Key
         if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
         {
-            if (isPaused)
+            if (settingsPanel != null && settingsPanel.activeSelf)
+            {
+                CloseSettings();
+            }
+            else if (isPaused && !isGameOver)
             {
                 ResumeGame();
             }
-            else
+            else if (!isPaused && !isGameOver)
             {
                 PauseGame();
             }
         }
     }
 
-    public void ResumeGame()
-    {
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
-        Time.timeScale = 1f;
-        isPaused = false;
-        Debug.Log("▶️ Game Resumed.");
-    }
-
     public void PauseGame()
     {
-        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
-        Time.timeScale = 0f; // Freeze world physics
+        if (isGameOver) return;
         isPaused = true;
+        Time.timeScale = 0f;
+
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(true);
+
+        // Safely hide active HUD triggers so they don't overlay on top of menus
+        if (hudPauseButton != null) hudPauseButton.SetActive(false);
+        if (hudSettingsButton != null) hudSettingsButton.SetActive(false);
+
         Debug.Log("⏸️ Game Paused.");
     }
 
-    public void TriggerGameOver()
+    public void ResumeGame()
     {
-        if (isGameOver) return;
-
-        isGameOver = true;
-        Time.timeScale = 0f; // Freeze game physics completely
+        isPaused = false;
+        Time.timeScale = 1f;
 
         if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+
+        if (hudPauseButton != null) hudPauseButton.SetActive(true);
+        if (hudSettingsButton != null) hudSettingsButton.SetActive(true);
+
+        Debug.Log("▶️ Game Resumed.");
+    }
+
+    public void OpenSettingsFromHUD()
+    {
+        if (isGameOver) return;
+        Time.timeScale = 0f;
+        sourcePanelBeforeSettings = null;
+
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+        if (hudPauseButton != null) hudPauseButton.SetActive(false);
+        if (hudSettingsButton != null) hudSettingsButton.SetActive(false);
+
+        Debug.Log("⚙️ Settings Window opened directly from HUD.");
+    }
+
+    public void OpenSettingsFromPauseMenu()
+    {
+        sourcePanelBeforeSettings = pauseMenuPanel;
+
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+
+        Debug.Log("⚙️ Settings Window opened from inside Pause Menu.");
+    }
+
+    public void OpenSettingsFromGameOver()
+    {
+        sourcePanelBeforeSettings = gameOverPanel;
+
+        if (gameOverPanel != null) gameOverPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(true);
+
+        Debug.Log("⚙️ Settings Window opened from inside Game Over Screen.");
+    }
+
+    public void CloseSettings()
+    {
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+
+        if (sourcePanelBeforeSettings != null)
+        {
+            sourcePanelBeforeSettings.SetActive(true);
+            Debug.Log($"⚙️ Closed Settings. Returned to: {sourcePanelBeforeSettings.name}");
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            if (hudPauseButton != null) hudPauseButton.SetActive(true);
+            if (hudSettingsButton != null) hudSettingsButton.SetActive(true);
+            Debug.Log("⚙️ Closed Settings. Restored active world gameplay.");
+        }
+    }
+
+    // ── 🎵 NEW AUDIO SINGLETON TRANSLATOR BRIDGE METHOD ───────────────────
+    /// <summary>
+    /// Bridges local scene UI button click actions directly to the cross-scene 
+    /// persistent BackgroundMusicManager Singleton instance without breaking engine scene boundaries.
+    /// </summary>
+    public void ToggleMusicMute()
+    {
+        if (BackgroundMusicManager.Instance != null)
+        {
+            BackgroundMusicManager.Instance.ToggleMute();
+            Debug.Log("🎵 [PauseMenu UI Bridge] Forwarded mute toggle signal to persistent BGM manager.");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ [PauseMenu UI Bridge] BackgroundMusicManager instance not found in this game loop session!");
+        }
+    }
+    // ───────────────────────────────────────────────────────────────────────
+
+    public void TriggerGameOver()
+    {
+        isGameOver = true;
+        isPaused = false;
+        Time.timeScale = 0f;
+
+        if (pauseMenuPanel != null) pauseMenuPanel.SetActive(false);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
         if (gameOverPanel != null) gameOverPanel.SetActive(true);
+
+        if (hudPauseButton != null) hudPauseButton.SetActive(false);
+        if (hudSettingsButton != null) hudSettingsButton.SetActive(false);
 
         Debug.Log("💀 Game Over Screen Displayed.");
     }
 
     public void RestartGame()
     {
-        // Inject their exact level entrance health snapshot back into memory!
         PlayerHealth.SavedHealth = PlayerHealth.LevelStartHealth;
-
-        Time.timeScale = 1f; // ALWAYS unfreeze time scaling before changing scenes!
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Debug.Log($"🔄 Reloading scene. Resetting player health back to checkpoint entry value: {PlayerHealth.LevelStartHealth}");
     }
 
     public void ExitToMenu()
     {
-        Debug.Log("🎯 ExitToMenu() button function was physically clicked!");
-        Time.timeScale = 1f; // ALWAYS unfreeze time scaling before returning to menus!
-
-        // Exact name matching your Scenes folder configuration down to the case
+        Time.timeScale = 1f;
         SceneManager.LoadScene("GameMenu");
-        Debug.Log("🚀 SceneManager load execution fired for 'GameMenu'.");
     }
 
     private void OnDestroy()
     {
-        // Always clean up your wires to prevent background memory leaks
         PlayerHealth.OnPlayerDeath -= HandleGameOverState;
     }
 
     private void HandleGameOverState()
     {
-        // Route the event signal directly into the existing robust panel system!
         TriggerGameOver();
     }
 }
