@@ -2,53 +2,77 @@
 
 public class EnemyHealth : MonoBehaviour
 {
-    [Header("Health & Lives Configuration")]
-    [Tooltip("How many hit points or lives this specific monster variant has.")]
-    public int maxHealth = 3;
-
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 3;
     private int currentHealth;
+
+    private Animator anim;
+    private Rigidbody2D rb;
+    private Collider2D enemyCollider;
     private bool isDead = false;
 
     private void Start()
     {
         currentHealth = maxHealth;
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        enemyCollider = GetComponent<Collider2D>();
     }
 
     public void TakeDamage(int damageAmount)
     {
-        if (isDead) return;
+        if (isDead) return; // Prevent dead bodies from absorbing additional hits
 
         currentHealth -= damageAmount;
-        Debug.Log($"💥 {gameObject.name} took {damageAmount} damage! Remaining Health: {currentHealth}/{maxHealth}");
+        Debug.Log($"{gameObject.name} took damage. Current HP: {currentHealth}");
 
         if (currentHealth <= 0)
         {
-            Die();
+            ExecuteMonsterDeath();
         }
     }
 
-    private void Die()
+    private void ExecuteMonsterDeath()
     {
         isDead = true;
-        Debug.Log($"💀 {gameObject.name} has been vanquished!");
 
-        // 🎬 ANIMATION BRIDGE: If this is Demon1, pass control to its animated death loop
-        Demon1Controller demon1 = GetComponent<Demon1Controller>();
-        if (demon1 != null)
+        // 1. 🎬 TRIGGER DEATH ANIMATION
+        if (anim != null)
         {
-            demon1.Die();
-            return; // Exit here so Demon1Controller handles delayed destruction
+            anim.SetTrigger("Die");
         }
 
-        // 🎬 ANIMATION BRIDGE: If this is Demon2, pass control to its animated death loop
-        Demon2Controller demon2 = GetComponent<Demon2Controller>();
-        if (demon2 != null)
+        // 2. 🛡️ DISABLE COMBAT PHYSICS: Let the player walk through the corpse safely
+        if (enemyCollider != null)
         {
-            demon2.Die();
-            return; // Exit here so Demon2Controller handles delayed destruction
+            enemyCollider.enabled = false;
         }
 
-        // 🌳 DEFAULT FALLBACK: For new enemies (Demon3, Treant, Vampire, Hell-Beast)
-        Destroy(gameObject);
+        // 3. 🛑 FREEZE VECTOR MOMENTUM
+        if (rb != null)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.bodyType = RigidbodyType2D.Kinematic;
+        }
+
+        // 4. 🧠 UNIVERSAL BRAIN SHUTDOWNMATRIX: 
+        // Forcefully disable whichever custom brain script this monster is running!
+        if (GetComponent<EnemyTouchChaser>() != null) GetComponent<EnemyTouchChaser>().enabled = false;
+        if (GetComponent<EnemyCharger>() != null) GetComponent<EnemyCharger>().enabled = false;
+        if (GetComponent<EnemyJumper>() != null) GetComponent<EnemyJumper>().enabled = false;
+        if (GetComponent<EnemyFireHaunt>() != null) GetComponent<EnemyFireHaunt>().enabled = false;
+
+        // Special Boss Handling: Wipe out his running magic coroutines instantly
+        if (GetComponent<EnemyHellBeast>() != null)
+        {
+            EnemyHellBeast bossBrain = GetComponent<EnemyHellBeast>();
+            bossBrain.StopAllCoroutines();
+            bossBrain.enabled = false;
+        }
+
+        Debug.Log($"💀 {gameObject.name} has fallen. Disabling systems and cleaning up memory core layers.");
+
+        // 5. Clean up game memory after death animation completes
+        Destroy(gameObject, 0.8f);
     }
 }
