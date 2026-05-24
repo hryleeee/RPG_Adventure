@@ -48,16 +48,16 @@ public class Scene3Manager : MonoBehaviour
 
     private readonly Panel[] panels = new Panel[]
     {
-        // image 19 — no text, just visual
-        new Panel { speaker="",        text="",                                                                    imgIndex=18 },
-        // image 10 — Kael dialogue
-        new Panel { speaker="Kael",    text="\"They are so many, I almost didn't make it!\"",                     imgIndex=9  },
-        // image 18 — Unknown voice
-        new Panel { speaker="Unknown", text="\"You think you are strong enough? You are a fool, human!\"",        imgIndex=17 },
-        // image 11 — Kael responds
-        new Panel { speaker="Kael",    text="\"Who are you!\"",                                                    imgIndex=10 },
-        // image 17 — Unknown final line
-        new Panel { speaker="Unknown", text="\"Let's see how further you can go...\"",                            imgIndex=16 },
+        // Slot 0 = 19.png — no text, just visual
+        new Panel { speaker="",        text="",                                                                    imgIndex=0 },
+        // Slot 1 = 10.png — Kael dialogue
+        new Panel { speaker="Kael",    text="\"They are so many, I almost didn't make it!\"",                     imgIndex=1 },
+        // Slot 2 = 18.png — Unknown voice
+        new Panel { speaker="Unknown", text="\"You think you are strong enough? You are a fool, human!\"",        imgIndex=2 },
+        // Slot 3 = 11.png — Kael responds
+        new Panel { speaker="Kael",    text="\"Who are you!\"",                                                    imgIndex=3 },
+        // Slot 4 = 17.png — Unknown final line
+        new Panel { speaker="Unknown", text="\"Let's see how further you can go...\"",                            imgIndex=4 },
     };
 
     private bool inputPressed = false;
