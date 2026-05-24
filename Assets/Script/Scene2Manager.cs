@@ -79,11 +79,15 @@ public class Scene2Manager : MonoBehaviour
 
     private IEnumerator RunSequence()
     {
+        int currentImgIndex = panels[0].imgIndex;
+
         // First panel — fade in from black
         if (panels.Length > 0)
         {
-            imageA.sprite = GetSprite(panels[0].imgIndex);
+            imageA.sprite = GetSprite(currentImgIndex);
+            imageB.sprite = GetSprite(currentImgIndex);
             SetAlpha(imageA, 0f);
+            SetAlpha(imageB, 0f);
             usingA = true;
             yield return StartCoroutine(FadeFirstIn(imageA, 1.5f));
             yield return StartCoroutine(ShowText(panels[0]));
@@ -91,21 +95,26 @@ public class Scene2Manager : MonoBehaviour
             yield return StartCoroutine(WaitForInput(holdDuration));
         }
 
-        // Remaining panels — crossfade
+        // Remaining panels — crossfade only when image changes
         for (int i = 1; i < panels.Length; i++)
         {
             inputPressed = false;
-            Image front = usingA ? imageA : imageB;
-            Image back  = usingA ? imageB : imageA;
+            int nextImgIndex = panels[i].imgIndex;
 
-            back.sprite = GetSprite(panels[i].imgIndex);
-            SetAlpha(back, 0f);
+            if (nextImgIndex != currentImgIndex)
+            {
+                Image front = usingA ? imageA : imageB;
+                Image back  = usingA ? imageB : imageA;
 
-            if (scrollPanel != null) scrollPanel.SetActive(false);
-            if (speakerText != null) speakerText.gameObject.SetActive(false);
+                if (scrollPanel != null) scrollPanel.SetActive(false);
+                if (speakerText != null) speakerText.gameObject.SetActive(false);
 
-            yield return StartCoroutine(Crossfade(front, back, crossfadeDuration));
-            usingA = !usingA;
+                back.sprite = GetSprite(nextImgIndex);
+                SetAlpha(back, 0f);
+                yield return StartCoroutine(Crossfade(front, back, crossfadeDuration));
+                usingA = !usingA;
+                currentImgIndex = nextImgIndex;
+            }
 
             yield return StartCoroutine(ShowText(panels[i]));
             inputPressed = false;

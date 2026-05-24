@@ -138,47 +138,44 @@ public class StoryManager : MonoBehaviour
     // ── Main sequence ─────────────────────────────────────────────────────
     private IEnumerator RunSequence()
     {
+        int currentImgIndex = panels[0].imgIndex;
+
         // First panel — fade in from black
         if (panels.Length > 0)
         {
-            Image front = imageA;
-            front.sprite = GetSprite(panels[0].imgIndex);
-            SetAlpha(front, 0f);
+            imageA.sprite = GetSprite(currentImgIndex);
+            imageB.sprite = GetSprite(currentImgIndex);
+            SetAlpha(imageA, 0f);
+            SetAlpha(imageB, 0f);
             usingA = true;
-
-            // Fade black overlay out while first image fades in
-            yield return StartCoroutine(FadeFirstIn(front, 1.5f));
-
+            yield return StartCoroutine(FadeFirstIn(imageA, 1.5f));
             yield return StartCoroutine(ShowText(panels[0]));
             inputPressed = false;
             yield return StartCoroutine(WaitForInput(holdDuration));
         }
 
-        // Remaining panels — crossfade between images
+        // Remaining panels — crossfade only when image changes
         for (int i = 1; i < panels.Length; i++)
         {
             inputPressed = false;
+            int nextImgIndex = panels[i].imgIndex;
 
-            Image front = usingA ? imageA : imageB;
-            Image back  = usingA ? imageB : imageA;
+            if (nextImgIndex != currentImgIndex)
+            {
+                Image front = usingA ? imageA : imageB;
+                Image back  = usingA ? imageB : imageA;
 
-            // Load next image into back buffer
-            back.sprite = GetSprite(panels[i].imgIndex);
-            SetAlpha(back, 0f);
+                if (scrollPanel != null) scrollPanel.SetActive(false);
+                if (speakerText != null) speakerText.gameObject.SetActive(false);
 
-            // Hide scroll during transition
-            if (scrollPanel != null) scrollPanel.SetActive(false);
-            if (speakerText != null) speakerText.gameObject.SetActive(false);
+                back.sprite = GetSprite(nextImgIndex);
+                SetAlpha(back, 0f);
+                yield return StartCoroutine(Crossfade(front, back, crossfadeDuration));
+                usingA = !usingA;
+                currentImgIndex = nextImgIndex;
+            }
 
-            // Crossfade: front fades out, back fades in
-            yield return StartCoroutine(Crossfade(front, back, crossfadeDuration));
-
-            // Swap buffers
-            usingA = !usingA;
-
-            // Show text on new image
             yield return StartCoroutine(ShowText(panels[i]));
-
             inputPressed = false;
             yield return StartCoroutine(WaitForInput(holdDuration));
         }
