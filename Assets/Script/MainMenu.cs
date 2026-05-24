@@ -110,8 +110,8 @@ public class MainMenu : MonoBehaviour
     {
         PlayerHealth.SavedHealth = -1;
 
-        Debug.Log("Start Button Clicked! Loading LEVEL1... Adventure awaits!");
-        SceneManager.LoadScene("LEVEL 1");
+        Debug.Log("Start Button Clicked! Loading Story Scene...");
+        SceneManager.LoadScene("Scene1");
     }
 
     public void ExitGame()
