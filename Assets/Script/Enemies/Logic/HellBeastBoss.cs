@@ -6,7 +6,6 @@ public class HellBeastBoss : MonoBehaviour
 {
     [Header("Boss Core Sliders")]
     [SerializeField] private float bossSpeed = 5f;
-    [SerializeField] private int bossMaxHealth = 20;
 
     [Header("Ranged Mode Assets")]
     [SerializeField] private GameObject fireballPrefab;

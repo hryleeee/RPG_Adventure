@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI; // Required to talk to the Image component!
@@ -26,27 +26,26 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        // Safety check to ensure all primary panels are assigned in the inspector
-        if (mainMenuPanel == null || settingsPanel == null || helpPanel == null)
+        // Useless null-check and 'return' removed completely to stop the ghost error!
+
+        // Initialize the menu layout safely only if the links are being used
+        if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+        if (settingsPanel != null) settingsPanel.SetActive(false);
+        if (helpPanel != null) helpPanel.SetActive(false);
+
+        // Track menu history cleanly if needed
+        if (panelHistory != null && mainMenuPanel != null)
         {
-            Debug.LogError("Please assign your MainMenuPanel, SettingsPanel, and HelpPanel in the Inspector!");
-            return;
+            panelHistory.Clear();
+            panelHistory.Push(mainMenuPanel);
         }
 
-        // Initialize the menu layout: Show Main Menu, Hide everything else
-        mainMenuPanel.SetActive(true);
-        settingsPanel.SetActive(false);
-        helpPanel.SetActive(false); // Keeps the help screen hidden at startup
-
-        // Clear history and push the main menu as the starting location
-        panelHistory.Clear();
-        panelHistory.Push(mainMenuPanel);
-
-        // FIX: Read your cached settings out of storage so the menu button remembers its visual state!
+        // 🎵 KEEP THIS CRITICAL PARTS RUNNING SMOOTHLY:
+        // Read your cached settings out of storage so the menu button remembers its visual state!
         // 0 = Unmuted (Music On), 1 = Muted (Music Off)
         isMusicOn = PlayerPrefs.GetInt("MusicMutedSetting", 0) == 0;
 
-        // Make sure the audio buttons show the correct sprites when the game starts
+        // Force the audio toggle buttons to show the correct sprites instantly at startup
         UpdateMusicButtonUI();
         UpdateSoundButtonUI();
     }

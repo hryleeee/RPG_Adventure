@@ -5,16 +5,20 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
+    // Explicitly define our audio states cleanly
+    public enum MusicState { MainMenu, Cutscene, Level1To3, Level4To6, Level7To9, Level10, None }
+    private MusicState currentTrackState = MusicState.None;
+
     [Header("Audio Components")]
     [SerializeField] private AudioSource musicSource;
 
     [Header("Music Tracks Assets")]
-    public AudioClip mainMenuMusic;
-    public AudioClip cutsceneMusic;
-    public AudioClip level1To3Music;
-    public AudioClip level4To6Music;
-    public AudioClip level7To9Music;
-    public AudioClip level10Music;
+    [SerializeField] private AudioClip mainMenuMusic;
+    [SerializeField] private AudioClip cutsceneMusic;
+    [SerializeField] private AudioClip level1To3Music;
+    [SerializeField] private AudioClip level4To6Music;
+    [SerializeField] private AudioClip level7To9Music;
+    [SerializeField] private AudioClip level10Music;
 
     private void Awake()
     {
@@ -38,7 +42,6 @@ public class AudioManager : MonoBehaviour
 
         musicSource.loop = true;
         musicSource.playOnAwake = false;
-
         ApplySavedMuteState();
     }
 
@@ -54,71 +57,65 @@ public class AudioManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        UpdateSceneMusic(scene.name, scene.buildIndex);
+        EvaluateSceneState(scene.name, scene.buildIndex);
     }
 
-    private void UpdateSceneMusic(string sceneName, int buildIndex)
+    /// <summary>
+    /// Evaluates structural scene parameters safely and maps them cleanly to an architectural state
+    /// </summary>
+    private void EvaluateSceneState(string sceneName, int buildIndex)
     {
-        AudioClip targetTrack = null;
+        MusicState targetState = MusicState.MainMenu;
 
-        // 1. Check for the Main Menu Scene
-        if (sceneName.Equals("GameMenu", System.StringComparison.OrdinalIgnoreCase) || buildIndex == 0)
+        if (buildIndex == 0 || sceneName.Equals("GameMenu", System.StringComparison.OrdinalIgnoreCase))
         {
-            targetTrack = mainMenuMusic;
+            targetState = MusicState.MainMenu;
         }
-        // 2. FIXED CONFIGURATION: Catch ALL cinematic scenes named "Scene1" through "Scene8"
         else if (sceneName.StartsWith("Scene", System.StringComparison.OrdinalIgnoreCase))
         {
-            targetTrack = cutsceneMusic;
+            targetState = MusicState.Cutscene;
         }
-        // 3. Dynamic grouping tracking layout logic rules for Level1 through Level10
         else if (sceneName.StartsWith("Level", System.StringComparison.OrdinalIgnoreCase))
         {
-            int levelNumber = ExtractLevelNumber(sceneName);
-
-            if (levelNumber >= 1 && levelNumber <= 3)
-            {
-                targetTrack = level1To3Music;
-            }
-            else if (levelNumber >= 4 && levelNumber <= 6)
-            {
-                targetTrack = level4To6Music;
-            }
-            else if (levelNumber >= 7 && levelNumber <= 9)
-            {
-                targetTrack = level7To9Music;
-            }
-            else if (levelNumber == 10)
-            {
-                targetTrack = level10Music;
-            }
+            int levelNum = ExtractDigits(sceneName);
+            if (levelNum >= 1 && levelNum <= 3) targetState = MusicState.Level1To3;
+            else if (levelNum >= 4 && levelNum <= 6) targetState = MusicState.Level4To6;
+            else if (levelNum >= 7 && levelNum <= 9) targetState = MusicState.Level7To9;
+            else if (levelNum == 10) targetState = MusicState.Level10;
         }
 
-        // Apply track changes cleanly ONLY if it's a completely new track asset file
-        if (targetTrack != null && musicSource.clip != targetTrack)
+        TransitionToState(targetState);
+    }
+
+    private void TransitionToState(MusicState newState)
+    {
+        // Don't interrupt or restart the audio tracking loop if we are staying within the same track state block
+        if (currentTrackState == newState && musicSource.isPlaying)
         {
-            musicSource.Stop();
-            musicSource.clip = targetTrack;
+            ApplySavedMuteState();
+            return;
+        }
+
+        musicSource.Stop();
+        currentTrackState = newState;
+
+        switch (currentTrackState)
+        {
+            case MusicState.MainMenu: musicSource.clip = mainMenuMusic; break;
+            case MusicState.Cutscene: musicSource.clip = cutsceneMusic; break;
+            case MusicState.Level1To3: musicSource.clip = level1To3Music; break;
+            case MusicState.Level4To6: musicSource.clip = level4To6Music; break;
+            case MusicState.Level7To9: musicSource.clip = level7To9Music; break;
+            case MusicState.Level10: musicSource.clip = level10Music; break;
+            default: musicSource.clip = null; break;
+        }
+
+        if (musicSource.clip != null)
+        {
             musicSource.Play();
         }
 
-        // Enforce your global menu saved preferences instantly across scenes
         ApplySavedMuteState();
-    }
-
-    private int ExtractLevelNumber(string name)
-    {
-        string digits = "";
-        foreach (char c in name)
-        {
-            if (char.IsDigit(c)) digits += c;
-        }
-
-        if (int.TryParse(digits, out int result))
-        {
-            return result;
-        }
-        return -1;
     }
 
     public void SetMusicMute(bool shouldMute)
@@ -136,8 +133,14 @@ public class AudioManager : MonoBehaviour
     {
         if (musicSource != null)
         {
-            bool isMutedSaved = PlayerPrefs.GetInt("MusicMutedSetting", 0) == 1;
-            musicSource.mute = isMutedSaved;
+            musicSource.mute = PlayerPrefs.GetInt("MusicMutedSetting", 0) == 1;
         }
+    }
+
+    private int ExtractDigits(string text)
+    {
+        string digits = "";
+        foreach (char c in text) if (char.IsDigit(c)) digits += c;
+        return int.TryParse(digits, out int val) ? val : -1;
     }
 }
