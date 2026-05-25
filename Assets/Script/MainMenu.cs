@@ -42,6 +42,10 @@ public class MainMenu : MonoBehaviour
         panelHistory.Clear();
         panelHistory.Push(mainMenuPanel);
 
+        // FIX: Read your cached settings out of storage so the menu button remembers its visual state!
+        // 0 = Unmuted (Music On), 1 = Muted (Music Off)
+        isMusicOn = PlayerPrefs.GetInt("MusicMutedSetting", 0) == 0;
+
         // Make sure the audio buttons show the correct sprites when the game starts
         UpdateMusicButtonUI();
         UpdateSoundButtonUI();
@@ -84,6 +88,18 @@ public class MainMenu : MonoBehaviour
     {
         isMusicOn = !isMusicOn;
         Debug.Log(isMusicOn ? "Music Status: ON" : "Music Status: OFF");
+
+        // FIX: Instantly save the user preference to persistent data tracking storage!
+        // If isMusicOn is true, shouldMute is false (0). If isMusicOn is false, shouldMute is true (1).
+        PlayerPrefs.SetInt("MusicMutedSetting", !isMusicOn ? 1 : 0);
+        PlayerPrefs.Save();
+
+        // Tell the global audio manager to mute or unmute the live audio source component
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.SetMusicMute(!isMusicOn);
+        }
+
         UpdateMusicButtonUI();
     }
 
@@ -111,6 +127,9 @@ public class MainMenu : MonoBehaviour
         PlayerHealth.SavedHealth = -1;
 
         Debug.Log("Start Button Clicked! Loading Story Scene...");
+
+        // This will load Scene1 (Cutscene). Our AudioManager will instantly see this 
+        // load event, cut off the main menu music, and start the cutscene music loop!
         SceneManager.LoadScene("Scene1");
     }
 

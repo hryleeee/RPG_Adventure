@@ -51025,6 +51025,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334397377}
   m_CullTransparentMesh: 1
+--- !u!1 &337336335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337336337}
+  - component: {fileID: 337336336}
+  m_Layer: 0
+  m_Name: MenuManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &337336336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337336335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca2e3de11069dc840a027fa64e6e0268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MainMenu
+  mainMenuPanel: {fileID: 0}
+  settingsPanel: {fileID: 0}
+  helpPanel: {fileID: 0}
+  musicButtonImage: {fileID: 0}
+  musicOnSprite: {fileID: 2262996002639423641, guid: 478f0cb46ab8a514bb055e7d0c59d7b2, type: 3}
+  musicOffSprite: {fileID: -5606764870234530254, guid: 856bf637b0d8f7049b851401ceb74205, type: 3}
+  soundButtonImage: {fileID: 0}
+  soundOnSprite: {fileID: -8978530861520444805, guid: 8a126869b7a11e442ae01afc81a1e7c1, type: 3}
+  soundOffSprite: {fileID: -9183937043872841316, guid: dde0d3091ad80f54ba0fac1912785c97, type: 3}
+--- !u!4 &337336337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337336335}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 80, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &373843135
 GameObject:
   m_ObjectHideFlags: 0
@@ -75897,6 +75950,7 @@ Transform:
   - {fileID: 124648781}
   - {fileID: 1094555158}
   - {fileID: 1185483207}
+  - {fileID: 1556457265}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473109381
@@ -76201,7 +76255,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1471219919}
     m_Modifications:
     - target: {fileID: 7247945456254297026, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_Name
@@ -76209,11 +76263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.4
+      value: 47.95
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.3
+      value: -16.32729
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalPosition.z
@@ -76225,15 +76279,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -76252,6 +76306,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
+--- !u!4 &1556457265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7752782353125096869, guid: df7e122aa8f43f14bab4ea53c8e4f1ff, type: 3}
+  m_PrefabInstance: {fileID: 1556457264}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1557116186
 GameObject:
   m_ObjectHideFlags: 0
@@ -76697,9 +76756,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1385293125}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: ToggleMusicMute
+      - m_Target: {fileID: 337336336}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: ToggleMusic
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -77287,4 +77346,4 @@ SceneRoots:
   - {fileID: 1385293126}
   - {fileID: 1950146689}
   - {fileID: 1473109382}
-  - {fileID: 1556457264}
+  - {fileID: 337336337}

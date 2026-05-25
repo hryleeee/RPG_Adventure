@@ -79,11 +79,12 @@ public class PlayerController : MonoBehaviour
 
             GameObject enemyTarget = hit.gameObject;
 
-            // 💥 1. APPLY PHYSICAL KNOCKBACK
+            // 💥 1. APPLY PHYSICAL KNOCKBACK (FIXED VARIABLE REFERENCE TYPO)
             EnemyKnockback knockback = enemyTarget.GetComponent<EnemyKnockback>();
             if (knockback != null)
             {
-                knockback.ApplyKnockback(transform.position, knockbackForce, knockbackDuration);
+                // Correct variable reference pointer used here: 'knockback'
+                knockback.TriggerKnockback(transform.position, knockbackForce, knockbackDuration);
             }
 
             // 💀 2. DAMAGE THE UNIVERSAL HEALTH SYSTEM

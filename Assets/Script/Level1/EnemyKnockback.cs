@@ -1,62 +1,57 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyKnockback : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private MonoBehaviour enemyAI; // Dynamically tracks either Demon1 or Demon2 script
+    private Rigidbody2D enemyRb;
+    private bool isCurrentlyKnockedBack = false;
 
-    [Header("Default Physics Profiles")]
-    [Tooltip("The mass damping multiplier. Higher values mean the enemy slows down faster after being pushed.")]
-    public float linearDragOverride = 5f;
-    private float originalDrag;
+    // Optional: Reference to the enemy's AI movement script to turn off pathfinding during hit-stun states
+    // private Demon1Controller demonAI; 
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
-
-        // 🧠 SMART COUPLING: Dynamically searches for whatever AI controller your teammate attached!
-        enemyAI = (MonoBehaviour)GetComponent("Demon1Controller") ?? (MonoBehaviour)GetComponent("Demon2Controller");
-
-        if (rb != null)
-        {
-            originalDrag = rb.linearDamping;
-        }
+        enemyRb = GetComponent<Rigidbody2D>();
+        // demonAI = GetComponent<Demon1Controller>();
     }
 
     /// <summary>
-    /// Computes and applies an immediate physical backward force vector away from the attack source.
+    /// Public entry point called by the weapon's hitbox code to initiate physics pushes.
     /// </summary>
-    public void ApplyKnockback(Vector2 damageSourcePosition, float force, float duration)
+    public void TriggerKnockback(Vector3 attackerPosition, float thrustForce, float stunDuration)
     {
-        if (rb == null) return;
+        if (isCurrentlyKnockedBack || enemyRb == null) return;
 
-        // Stop any active knockback routines if they get hit again mid-air (juggling combo support!)
-        StopAllCoroutines();
-        StartCoroutine(KnockbackRoutine(damageSourcePosition, force, duration));
+        // Start the physics manipulation loop sequence
+        StartCoroutine(ExecuteKnockbackCoroutine(attackerPosition, thrustForce, stunDuration));
     }
 
-    private IEnumerator KnockbackRoutine(Vector2 sourcePosition, float force, float duration)
+    private IEnumerator ExecuteKnockbackCoroutine(Vector3 attackerPosition, float thrustForce, float stunDuration)
     {
-        // 1. Cut the power to the AI script so it stops trying to walk toward the player during the push
-        if (enemyAI != null) enemyAI.enabled = false;
+        isCurrentlyKnockedBack = true;
 
-        // 2. Set high drag so the push feels snappy and doesn't make them slide like they are on ice
-        rb.linearDamping = linearDragOverride;
+        // 1. Turn off AI pathfinding tracking routines temporarily so the code doesn't try to move forward while flying backward
+        // if (demonAI != null) demonAI.enabled = false;
 
-        // 3. Calculate directional vector (Target Position minus Source Position)
-        Vector2 pushDirection = ((Vector2)transform.position - sourcePosition).normalized;
+        // 2. VECTOR MATH: Calculate the pure normalized trajectory directional array moving AWAY from the player asset
+        Vector2 forceDirection = (transform.position - attackerPosition).normalized;
 
-        // 4. Fire the instantaneous velocity burst
-        rb.linearVelocity = pushDirection * force;
+        // 3. PHYSICS INJECTION: Set the Rigidbody2D velocity vector to push the enemy backward instantly
+        enemyRb.linearVelocity = forceDirection * thrustForce;
 
-        // 5. Let the physics handle the slide during the stun duration window
-        yield return new WaitForSeconds(duration);
+        // Wait out the frame delta processing arrays during active hit-stun windows
+        yield return new WaitForSeconds(stunDuration);
 
-        // 6. Calm the physics down cleanly and return control to the AI brain script
-        rb.linearDamping = originalDrag;
-        rb.linearVelocity = Vector2.zero;
+        // 4. CLEAN RESET: Zero out structural velocities smoothly to stop sliding infinitely
+        if (enemyRb != null)
+        {
+            enemyRb.linearVelocity = Vector2.zero;
+        }
 
-        if (enemyAI != null) enemyAI.enabled = true;
+        // 5. Restore full structural runtime controls back over to your custom pathfinding steering modules
+        // if (demonAI != null) demonAI.enabled = true;
+
+        isCurrentlyKnockedBack = false;
     }
 }
